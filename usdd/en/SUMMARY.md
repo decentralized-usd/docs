@@ -64,7 +64,7 @@
 * [Secure Framework](security/secure-framework.md)
 * [Audits](security/audits.md)
 
-## LRGALS
+## LEGALS
 
-* [Terms of Use](lrgals/terms-of-use.md)
-* [Privacy Policy](lrgals/privacy-policy.md)
+* [Terms of Use](legals/terms-of-use.md)
+* [Privacy Policy](legals/privacy-policy.md)
