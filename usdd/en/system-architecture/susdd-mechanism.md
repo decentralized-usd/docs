@@ -6,7 +6,7 @@
 
 The value growth of sUSDD stems from its unique redemption mechanism, which reflects the dynamic relationship between total USDD staked and accumulated rewards. The minting and valuation formulas are as follows:
 
-<figure><img src=".gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
 **Dynamic value growth**
 

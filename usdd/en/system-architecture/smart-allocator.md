@@ -52,7 +52,7 @@ Smart Allocator brings a range of benefits to both the USDD protocol and USDD us
 * **Optimizing capital efficiency** — Deploying surplus funds effectively without affecting user liquidity or redemption
 * **Diversifying systemic risks** — Spreading investments across multiple platforms and increasing the protocol’s resilience to market volatility and other vulnerabilities
 
-## &#x20;How Do I Participate in Smart Allocator? <a href="#id-9cdf" id="id-9cdf"></a>
+## How Do I Participate in Smart Allocator? <a href="#id-9cdf" id="id-9cdf"></a>
 
 There is nothing you need to change or opt into. As a USDD user, you are ready to reap the benefits of Smart Allocator. Just continue staking USDD as you always have, and when the time comes, your share of the yield will flow back to you.
 

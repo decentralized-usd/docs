@@ -7,19 +7,14 @@
 * [Why upgrade USDD?](introduction/why-upgrade-usdd.md)
 * [Core Features](introduction/core-features.md)
 * [Contract Addresses](introduction/collateral-asset-contract-addresses.md)
-
-***
-
-* [Ecosystem Migration Progress](ecosystem-migration-progress.md)
+* [Ecosystem Migration Progress](introduction/ecosystem-migration-progress.md)
 
 ## SYSTEM ARCHITECTURE
 
 * [System Architecture](system-architecture/system-architecture.md)
-
-***
-
-* [Smart Allocator](smart-allocator.md)
-* [sUSDD Mechanism](susdd-mechanism.md)
+* [Smart Allocator](system-architecture/smart-allocator.md)
+* [sUSDD Mechanism](system-architecture/susdd-mechanism.md)
+* [Regarding the Dynamic APY Pricing Mechanism](system-architecture/regarding-the-dynamic-apy-pricing-mechanism.md)
 
 ## USER GUIDE
 
