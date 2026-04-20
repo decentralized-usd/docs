@@ -49,6 +49,7 @@
   * [Example Process](developers/liquidation-and-auction/example-process.md)
   * [Benefits](developers/liquidation-and-auction/benefits.md)
 * [Oracle](developers/oracle.md)
+* [AI / LLMs](developers/ai-llms.md)
 
 ## GOVERNANCE
 
