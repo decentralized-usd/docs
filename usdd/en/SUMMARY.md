@@ -50,7 +50,6 @@
   * [Benefits](developers/liquidation-and-auction/benefits.md)
 * [Oracle](developers/oracle.md)
 * [APIs](developers/apis.md)
-* [AI / LLMs](developers/ai-llms.md)
 
 ## AI Support
 
@@ -63,6 +62,7 @@
   * [Architecture](ai-support/mcp-server/README.md#architecture)
   * [Security Considerations](ai-support/mcp-server/README.md#security-considerations)
   * [Example Conversations](ai-support/mcp-server/README.md#example-conversations)
+* [AI / LLMs](ai-support/ai-llms.md)
 
 ## GOVERNANCE
 
