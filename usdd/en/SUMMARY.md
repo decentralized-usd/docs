@@ -52,6 +52,18 @@
 * [APIs](developers/apis.md)
 * [AI / LLMs](developers/ai-llms.md)
 
+## AI Support
+
+* [MCP Server](ai-support/mcp-server/README.md)
+  * [What It Is](ai-support/mcp-server/README.md#what-it-is)
+  * [Prerequisites](ai-support/mcp-server/README.md#prerequisites)
+  * [Developer](ai-support/mcp-server/README.md#developer)
+  * [Configuration](ai-support/mcp-server/README.md#configuration)
+  * [Tools](ai-support/mcp-server/README.md#tools)
+  * [Architecture](ai-support/mcp-server/README.md#architecture)
+  * [Security Considerations](ai-support/mcp-server/README.md#security-considerations)
+  * [Example Conversations](ai-support/mcp-server/README.md#example-conversations)
+
 ## GOVERNANCE
 
 * [Overview](governance/overview.md)
