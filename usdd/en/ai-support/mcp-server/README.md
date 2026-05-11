@@ -27,7 +27,7 @@ The USDD MCP Server is a [Model Context Protocol](https://modelcontextprotocol.i
 
 ### Supported Networks
 
-<table data-header-hidden><thead><tr><th width="205.67578125"></th><th width="167.59765625"></th><th></th></tr></thead><tbody><tr><td>Network</td><td>Key</td><td>Notes</td></tr><tr><td>TRON</td><td><code>tron</code></td><td>TRON-native vault and PSM support</td></tr><tr><td>Ethereum</td><td><code>eth</code></td><td>Vault, PSM, USDD Savings</td></tr><tr><td>BNB Smart Chain</td><td><code>bsc</code></td><td>Mirrors ETH deployment structure</td></tr></tbody></table>
+<table><thead><tr><th width="193.8828125">Network</th><th width="185.46875">Key</th><th>Notes</th></tr></thead><tbody><tr><td>TRON</td><td><code>tron</code></td><td>TRON-native vault and PSM support</td></tr><tr><td>Ethereum</td><td><code>eth</code></td><td>Vault, PSM, USDD Savings</td></tr><tr><td>BNB Smart Chain</td><td><code>bsc</code></td><td>Mirrors ETH deployment structure</td></tr><tr><td>TRON Nile</td><td><code>tron_nile</code></td><td>Internal testnet deployment</td></tr><tr><td>Ethereum Sepolia</td><td><code>eth_sepolia</code></td><td>Internal testnet deployment</td></tr><tr><td>BSC Testnet</td><td><code>bsc_testnet</code></td><td>Internal testnet deployment</td></tr></tbody></table>
 
 ### Prerequisites
 
@@ -57,21 +57,20 @@ npm run dev
 
 ### Configuration
 
-#### Wallet Setup (Automatic)
+#### Wallet Modes
 
-The server uses [@bankofai/agent-wallet](https://github.com/BofAI/agent-wallet) for encrypted local wallet storage. On first startup it will automatically initialize `~/.agent-wallet/` and create a default wallet if none exists.
+The server supports two signing modes:
 
-If a wallet has already been created using **agent-wallet**, no new wallet will be generated during the next startup.
+* **Browser mode (recommended)**: connect a TronLink-compatible browser wallet and sign in browser.
+* **Agent mode**: Encrypted local wallet via `set_wallet_mode` with `mode="agent"` — keys stored in `~/.agent-wallet/`.
 
-On startup, the server will:
-
-1. Check for existing wallets in `~/.agent-wallet/`
-2. If none are found, auto-generate a new encrypted wallet
-3. Display the derived TRON and EVM addresses in the console
+For TRON writes, each Claude session shows a one-time signing-mode confirmation reminder before the first write.
 
 You can also manage wallets via **CLI** or **MCP tools**:
 
 **CLI (agent-wallet)**
+
+The server uses [@bankofai/agent-wallet](https://github.com/BofAI/agent-wallet) for encrypted local wallet storage. On first startup it will automatically initialize \~/.agent-wallet/ and create a default wallet if none exists.
 
 ```
 # Import an existing private key or mnemonic
@@ -89,7 +88,7 @@ npx agent-wallet activate <wallet-id>
 
 **MCP Tools (runtime)**
 
-<table data-header-hidden><thead><tr><th width="225.05078125"></th><th></th></tr></thead><tbody><tr><td>Tool</td><td>Description</td></tr><tr><td><code>get_wallet_address</code></td><td>Shows current address (auto-generates wallet if needed)</td></tr><tr><td><code>import_wallet</code></td><td>Import an existing private key (stored encrypted)</td></tr><tr><td><code>list_wallets</code></td><td>List all wallets with IDs, types, addresses</td></tr><tr><td><code>set_active_wallet</code></td><td>Switch active wallet by ID</td></tr></tbody></table>
+<table data-header-hidden><thead><tr><th width="225.05078125">Tool</th><th>Description</th></tr></thead><tbody><tr><td><code>get_wallet_address</code></td><td>Shows current address (auto-generates wallet if needed)</td></tr><tr><td><code>connect_browser_wallet</code></td><td>Connect TronLink / browser wallet for signing</td></tr><tr><td><code>set_wallet_mode</code></td><td>Switch between browser and agent signing</td></tr><tr><td><code>get_wallet_mode</code></td><td>Show current signing mode and addresses</td></tr><tr><td><code>list_wallets</code></td><td>List wallets with per-family active status (<code>tron</code> and <code>evm</code>)</td></tr><tr><td><code>set_active_wallet</code></td><td>Switch active wallet by ID, optionally scoped by <code>walletType</code> (<code>tron</code>/<code>evm</code>)</td></tr></tbody></table>
 
 #### Environment Variables
 
@@ -161,9 +160,13 @@ Add to .cursor/mcp.json:
 
 ### Tools
 
+#### Wallet & Network<br>
+
+<table><thead><tr><th width="229.76953125">Tool</th><th width="450.47265625">Description</th><th>Write?</th></tr></thead><tbody><tr><td><code>get_supported_networks</code></td><td>List supported networks</td><td>No</td></tr><tr><td><code>set_network</code></td><td>Set default network for one family (<code>tron</code>/<code>eth</code>/<code>bsc</code>), supports aliases like <code>mainnet</code>, <code>nile</code></td><td>Yes</td></tr><tr><td><code>get_network</code></td><td>Get per-family default networks</td><td>No</td></tr><tr><td><code>get_wallet_mode</code></td><td>Get active wallet signing mode (<code>agent</code>/<code>browser</code>)</td><td>No</td></tr><tr><td><code>set_wallet_mode</code></td><td>Switch active signing mode</td><td>Yes</td></tr><tr><td><code>connect_browser_wallet</code></td><td>Connect a browser wallet and activate browser mode</td><td>Yes</td></tr><tr><td><code>get_wallet_address</code></td><td>Show current address for the target network</td><td>No</td></tr><tr><td><code>list_wallets</code></td><td>List wallets and per-family active pointers (<code>tron</code>/<code>evm</code>)</td><td>No</td></tr><tr><td><code>set_active_wallet</code></td><td>Switch active wallet by ID (supports optional <code>walletType</code>)</td><td>Yes</td></tr><tr><td><code>import_wallet</code></td><td>Import private key/mnemonic into encrypted local store</td><td>Yes</td></tr></tbody></table>
+
 #### Common
 
-<table data-header-hidden><thead><tr><th width="231.23828125"></th><th width="455.4765625"></th><th></th></tr></thead><tbody><tr><td>Tool</td><td>Description</td><td>Write?</td></tr><tr><td><code>get_supported_networks</code></td><td>List supported networks</td><td>No</td></tr><tr><td><code>get_protocol_overview</code></td><td>Show configured protocol addresses, ilks, PSMs, and ceilings</td><td>No</td></tr><tr><td><code>get_supported_ilks</code></td><td>List configured collateral types and PSM joins</td><td>No</td></tr><tr><td><code>get_token_balance</code></td><td>Read ERC20/TRC20 balance</td><td>No</td></tr><tr><td><code>check_allowance</code></td><td>Read ERC20/TRC20 allowance and compare against an optional amount</td><td>No</td></tr><tr><td><code>approve_token</code></td><td>Approve token allowance</td><td>Yes</td></tr></tbody></table>
+<table><thead><tr><th width="229.9140625">Tool</th><th width="450.203125">Description</th><th>Write?</th></tr></thead><tbody><tr><td><code>get_protocol_overview</code></td><td>Show configured protocol addresses, ilks, PSMs, and ceilings</td><td>No</td></tr><tr><td><code>get_supported_ilks</code></td><td>List configured collateral types and PSM joins</td><td>No</td></tr><tr><td><code>get_native_balance</code></td><td>Read native balance (<code>TRX</code> / <code>ETH</code> / <code>BNB</code>)</td><td>No</td></tr><tr><td><code>get_token_balance</code></td><td>Read ERC20/TRC20 balance</td><td>No</td></tr><tr><td><code>check_allowance</code></td><td>Read ERC20/TRC20 allowance and compare against an optional amount</td><td>No</td></tr><tr><td><code>approve_token</code></td><td>Approve token allowance</td><td>Yes</td></tr></tbody></table>
 
 #### Vault
 
