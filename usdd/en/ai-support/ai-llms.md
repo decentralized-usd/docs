@@ -39,7 +39,7 @@ USDD provides an `llms.txt` index for AI tools:
 To use it, paste the URL into your Claude Code prompt — Claude Code will fetch it automatically:
 
 ```
-Read https://docs.usdd.io/llms-full.txt to answer questions about USDD.
+Read https://docs.usdd.io/llms-full.txt to learn about the USDD project
 ```
 
 #### Other Tools <a href="#other-tools" id="other-tools"></a>
