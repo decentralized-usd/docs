@@ -31,16 +31,15 @@ https://docs.usdd.io/llms-full.txt
 
 #### Claude Code <a href="#claude-code" id="claude-code"></a>
 
-Run in your terminal:
+USDD provides an `llms.txt` index for AI tools:
 
-```bash
-claude --add-docs https://docs.usdd.io/llms.txt
+* Index: https://docs.usdd.io/llms.txt
+* Full docs: https://docs.usdd.io/llms-full.txt
+
+To use it, paste the URL into your Claude Code prompt — Claude Code will fetch it automatically:
+
 ```
-
-Or for full context:
-
-```bash
-claude --add-docs https://docs.usdd.io/llms-full.txt
+Read https://docs.usdd.io/llms-full.txt to answer questions about USDD.
 ```
 
 #### Other Tools <a href="#other-tools" id="other-tools"></a>
