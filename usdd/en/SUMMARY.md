@@ -59,9 +59,9 @@
   * [Developer](ai-support/mcp-server/README.md#developer)
   * [Configuration](ai-support/mcp-server/README.md#configuration)
   * [Tools](ai-support/mcp-server/README.md#tools)
-  * [Architecture](ai-support/mcp-server/README.md#architecture)
-  * [Security Considerations](ai-support/mcp-server/README.md#security-considerations)
+  * [Security Model](ai-support/mcp-server/README.md#security-model)
   * [Example Conversations](ai-support/mcp-server/README.md#example-conversations)
+  * [Architecture](ai-support/mcp-server/README.md#architecture)
 * [AI / LLMs](ai-support/ai-llms.md)
 
 ## GOVERNANCE

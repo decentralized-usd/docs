@@ -74,7 +74,7 @@ Private keys are **never** returned by any MCP tool.
 
 The server uses [@bankofai/agent-wallet](https://github.com/BofAI/agent-wallet) for encrypted local wallet storage. On first startup it will automatically initialize \~/.agent-wallet/ and create a default wallet if none exists.
 
-```
+```bash
 # Import an existing private key or mnemonic
 npx agent-wallet add
 
@@ -94,7 +94,7 @@ npx agent-wallet activate <wallet-id>
 
 #### Environment Variables
 
-```
+```bash
 # Strongly recommended — avoids TronGrid 429 rate limiting on mainnet
 export TRONGRID_API_KEY="your_trongrid_api_key"
 ```
@@ -212,9 +212,39 @@ Pending confirmations expire after 10 minutes&#x20;
 
 <table><thead><tr><th width="207.82421875">Tool</th><th width="229.62890625">Description</th><th width="95.44140625">Write?</th><th>Input schema</th></tr></thead><tbody><tr><td><code>get_smart_allocator_overview</code></td><td>Overview: debt, invested amount, earnings, APY</td><td>No</td><td>—</td></tr><tr><td><code>get_assets_breakdown</code></td><td>Breakdown by <code>protocol</code> / <code>network</code> / <code>asset</code></td><td>No</td><td><strong>Required</strong>: <code>dimension: "protocol" \| "network" \| "asset"</code></td></tr><tr><td><code>get_proof_of_reserve</code></td><td>Proof-of-reserve style platform investment details</td><td>No</td><td>—</td></tr><tr><td><code>get_debt_overview</code></td><td>Debt overview grouped by vault per network</td><td>No</td><td>—</td></tr></tbody></table>
 
+### Output Contract <a href="#f0-9f-86-95-5bnew-5d-output-contract" id="f0-9f-86-95-5bnew-5d-output-contract"></a>
+
+Every tool returns the standard MCP content envelope. The `text` field is a JSON\
+string (`utils.formatJson(...)`) of the payload below.
+
+**Success — read tools**
+
+```json
+{ "content": [ { "type": "text", "text": "<JSON of the tool-specific object>" } ] }
+```
+
+**Success — write tools (`remote-write` )** — always includes the broadcast result + a human-readable `message`:
+
+```json
+{ "content": [ { "type": "text", "text": "{
+  \"txID\": \"<tx hash>\", \"receipt\": { /* chain receipt */ },
+  \"message\": \"<e.g. 'Approved 1000 for spender ...'>\"
+}" } ] }
+```
+
+`confirm_token_transfer` wraps this as `{ confirmationId, status: "success" | "cancelled", result }`.
+
+**Representative read payloads** :
+
+* `get_vault_summary` → `{ cdpId, owner, proxyAddress, ilk, collateralAmount, collateralAmountRaw, normalizedDebt, debtAmount, walletUsddBalance, debtCeiling, ... }`&#x20;
+* `approve_token` → `{ token, spender, amount, amountRaw, message }`&#x20;
+* `get_user_vaults` → `{ network, address, vaultIds: string[] }`&#x20;
+
+**Error envelope**: `{ "content": [ { "type": "text", "text": "Error: <message>" } ], "isError": true }`
+
 ### Prompts
 
-<table data-header-hidden><thead><tr><th width="230.25"></th><th></th></tr></thead><tbody><tr><td>Prompt</td><td>Description</td></tr><tr><td><code>open_usdd_vault</code></td><td>Open a vault and verify post-trade risk</td></tr><tr><td><code>manage_vault_lifecycle</code></td><td>Run full vault lifecycle flows</td></tr><tr><td><code>use_psm</code></td><td>Use PSM with fee checks</td></tr><tr><td><code>use_savings</code></td><td>Use USDD Savings with inspection and verification</td></tr><tr><td><code>review_vault_risk</code></td><td>Explain risk for a vault</td></tr><tr><td><code>repay_and_close_vault</code></td><td>Repay and close with verification</td></tr><tr><td><code>transfer_tokens</code></td><td>Transfer tokens with two-step preview and explicit confirmation</td></tr></tbody></table>
+<table data-header-hidden><thead><tr><th width="230.25"></th><th></th></tr></thead><tbody><tr><td>Prompt</td><td>Description</td></tr><tr><td><code>open_usdd_vault</code></td><td>Open a vault and verify post-trade risk</td></tr><tr><td><code>manage_vault_lifecycle</code></td><td>Run full vault lifecycle flows</td></tr><tr><td><code>use_psm</code></td><td>Use PSM with fee checks</td></tr><tr><td><code>use_savings</code></td><td>Use USDD Savings with inspection and verification</td></tr><tr><td><code>review_vault_risk</code></td><td>Explain risk for a vault</td></tr><tr><td><code>repay_and_close_vault</code></td><td>Repay and close with verification</td></tr><tr><td><code>prepare_token_transfer</code></td><td>Transfer tokens with two-step preview and explicit confirmation</td></tr></tbody></table>
 
 ### Notes
 
