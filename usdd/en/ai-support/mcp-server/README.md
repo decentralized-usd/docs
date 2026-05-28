@@ -66,14 +66,9 @@ npm run dev
 
 #### Wallet Modes
 
-The server supports two signing modes:
+<table><thead><tr><th width="198.09765625">Mode</th><th>When to use</th><th>Key storage</th></tr></thead><tbody><tr><td><strong>Browser</strong> (TronLink-compatible)</td><td>Sign in a browser extension (TronLink)</td><td>Wallet extension</td></tr><tr><td><strong>Agent</strong></td><td>Automation / CI / headless; required for EVM signing</td><td>Encrypted local file under <code>~/.agent-wallet/</code>, never exported</td></tr></tbody></table>
 
-* **Browser mode (recommended)**: connect a TronLink-compatible browser wallet and sign in browser.
-* **Agent mode**: Encrypted local wallet via `set_wallet_mode` with `mode="agent"` — keys stored in `~/.agent-wallet/`.
-
-For TRON writes, each Claude session shows a one-time signing-mode confirmation reminder before the first write.
-
-You can also manage wallets via **CLI** or **MCP tools**:
+Private keys are **never** returned by any MCP tool.
 
 **CLI (agent-wallet)**
 
@@ -93,7 +88,7 @@ npx agent-wallet list
 npx agent-wallet activate <wallet-id>
 ```
 
-**MCP Tools (runtime)**
+**Wallet management MCP tools(runtime)**
 
 <table data-header-hidden><thead><tr><th width="225.05078125">Tool</th><th>Description</th></tr></thead><tbody><tr><td><code>get_wallet_address</code></td><td>Shows current address (auto-generates wallet if needed)</td></tr><tr><td><code>connect_browser_wallet</code></td><td>Connect TronLink / browser wallet for signing</td></tr><tr><td><code>set_wallet_mode</code></td><td>Switch between browser and agent signing</td></tr><tr><td><code>get_wallet_mode</code></td><td>Show current signing mode and addresses</td></tr><tr><td><code>list_wallets</code></td><td>List wallets with per-family active status (<code>tron</code> and <code>evm</code>)</td></tr><tr><td><code>set_active_wallet</code></td><td>Switch active wallet by ID, optionally scoped by <code>walletType</code> (<code>tron</code>/<code>evm</code>)</td></tr></tbody></table>
 
@@ -167,89 +162,59 @@ Add to .cursor/mcp.json:
 
 ### Tools
 
-#### Wallet & Network<br>
+#### Side-Effect & Risk Classification <a href="#side-effect-26-risk-classification" id="side-effect-26-risk-classification"></a>
 
-<table><thead><tr><th width="229.76953125">Tool</th><th width="450.47265625">Description</th><th>Write?</th></tr></thead><tbody><tr><td><code>get_supported_networks</code></td><td>List supported networks</td><td>No</td></tr><tr><td><code>set_network</code></td><td>Set default network for one family (<code>tron</code>/<code>eth</code>/<code>bsc</code>), supports aliases like <code>mainnet</code>, <code>nile</code></td><td>Yes</td></tr><tr><td><code>get_network</code></td><td>Get per-family default networks</td><td>No</td></tr><tr><td><code>get_wallet_mode</code></td><td>Get active wallet signing mode (<code>agent</code>/<code>browser</code>)</td><td>No</td></tr><tr><td><code>set_wallet_mode</code></td><td>Switch active signing mode</td><td>Yes</td></tr><tr><td><code>connect_browser_wallet</code></td><td>Connect a browser wallet and activate browser mode</td><td>Yes</td></tr><tr><td><code>get_wallet_address</code></td><td>Show current address for the target network</td><td>No</td></tr><tr><td><code>list_wallets</code></td><td>List wallets and per-family active pointers (<code>tron</code>/<code>evm</code>)</td><td>No</td></tr><tr><td><code>set_active_wallet</code></td><td>Switch active wallet by ID (supports optional <code>walletType</code>)</td><td>Yes</td></tr><tr><td><code>import_wallet</code></td><td>Import private key/mnemonic into encrypted local store</td><td>Yes</td></tr></tbody></table>
+All tools are classified by side-effect level. Hosts MUST surface `remote-write` and `destructive` operations to the user before execution.
 
-#### Common
+<table><thead><tr><th width="164.97265625">Level</th><th>Definition</th><th>Tools</th></tr></thead><tbody><tr><td><code>safe</code></td><td>Pure local read, no network</td><td><p><code>get_supported_networks</code>, </p><p><code>get_network</code>, </p><p><code>get_wallet_mode</code>, </p><p><code>get_wallet_address</code>, </p><p><code>list_wallets</code></p></td></tr><tr><td><code>network-read</code></td><td>Read-only on-chain or HTTP query</td><td><p><code>get_protocol_overview</code>, </p><p><code>get_supported_ilks</code>, </p><p><code>get_native_balance</code>, </p><p><code>get_token_balance</code>, </p><p><code>check_allowance</code>, </p><p><code>get_oracle_status</code>, </p><p><code>get_user_vaults</code>, </p><p><code>get_vault_summary</code>, </p><p><code>analyze_vault_risk</code>, </p><p><code>get_psm_status</code>, </p><p><code>get_savings_status</code>, </p><p><code>get_protocol_metrics</code>, </p><p><code>get_chain_metrics</code>, </p><p><code>get_collateral_prices</code>, </p><p><code>get_psm_metrics</code>, </p><p><code>get_treasury_summary</code>, <code>get_jst_buyback_stats</code>, </p><p><code>get_smart_allocator_overview</code>, </p><p><code>get_assets_breakdown</code>, </p><p><code>get_proof_of_reserve</code>, </p><p><code>get_debt_overview</code></p></td></tr><tr><td><code>local-write</code></td><td>Modifies local config / wallet store</td><td><p><code>set_network</code>, </p><p><code>set_wallet_mode</code>, </p><p><code>set_active_wallet</code>, </p><p><code>import_wallet</code>, </p><p><code>connect_browser_wallet</code></p></td></tr><tr><td><code>remote-write</code></td><td>Broadcasts a tx, costs gas, HITL required</td><td><p><code>approve_token</code>, </p><p><code>open_vault</code>, </p><p><code>deposit_and_mint</code>,</p><p> <code>mint_usdd</code>,</p><p> <code>repay_usdd</code>, </p><p><code>withdraw_collateral</code>, </p><p><code>psm_swap_to_usdd</code>, </p><p><code>psm_swap_from_usdd</code>, </p><p><code>deposit_savings</code>, </p><p><code>withdraw_savings</code>, </p><p><code>prepare_token_transfer</code>, </p><p><code>confirm_token_transfer</code>, </p><p><code>close_vault</code></p></td></tr></tbody></table>
 
-<table><thead><tr><th width="229.9140625">Tool</th><th width="450.203125">Description</th><th>Write?</th></tr></thead><tbody><tr><td><code>get_protocol_overview</code></td><td>Show configured protocol addresses, ilks, PSMs, and ceilings</td><td>No</td></tr><tr><td><code>get_supported_ilks</code></td><td>List configured collateral types and PSM joins</td><td>No</td></tr><tr><td><code>get_native_balance</code></td><td>Read native balance (<code>TRX</code> / <code>ETH</code> / <code>BNB</code>)</td><td>No</td></tr><tr><td><code>get_token_balance</code></td><td>Read ERC20/TRC20 balance</td><td>No</td></tr><tr><td><code>check_allowance</code></td><td>Read ERC20/TRC20 allowance and compare against an optional amount</td><td>No</td></tr><tr><td><code>approve_token</code></td><td>Approve token allowance</td><td>Yes</td></tr></tbody></table>
+**Safe to retry**: `safe`, `network-read`, and all `prepare_*` previews.\
+**NOT safe to retry**: every `remote-write`  tool — a duplicate call may broadcast a second tx.
 
-#### Vault
+#### Wallet & Network <a href="#id-8.1-wallet-26-network" id="id-8.1-wallet-26-network"></a>
 
-<table data-header-hidden><thead><tr><th width="229.890625"></th><th width="454.9296875"></th><th></th></tr></thead><tbody><tr><td>Tool</td><td>Description</td><td>Write?</td></tr><tr><td><code>get_oracle_status</code></td><td>Inspect oracle and liquidation configuration for an ilk</td><td>No</td></tr><tr><td><code>get_user_vaults</code></td><td>List vault IDs for a wallet</td><td>No</td></tr><tr><td><code>get_vault_summary</code></td><td>Show collateral, debt, and liquidation metrics</td><td>No</td></tr><tr><td><code>analyze_vault_risk</code></td><td>Summarize risk with warnings</td><td>No</td></tr><tr><td><code>open_vault</code></td><td>Open a new vault via DSProxy</td><td>Yes</td></tr><tr><td><code>deposit_and_mint</code></td><td>Open-and-mint or add collateral and mint</td><td>Yes</td></tr><tr><td><code>mint_usdd</code></td><td>Draw more USDD from a vault</td><td>Yes</td></tr><tr><td><code>repay_usdd</code></td><td>Repay vault debt</td><td>Yes</td></tr><tr><td><code>withdraw_collateral</code></td><td>Withdraw collateral from a vault</td><td>Yes</td></tr><tr><td><code>close_vault</code></td><td>Wipe all debt and free collateral</td><td>Yes</td></tr></tbody></table>
+<table><thead><tr><th width="215.08984375">Tool</th><th width="229.9375">Description</th><th width="94.6875">Write?</th><th>Input schema</th></tr></thead><tbody><tr><td><code>get_supported_networks</code></td><td>List supported networks</td><td>No</td><td>—</td></tr><tr><td><code>set_network</code></td><td>Set the default network for a family (<code>tron</code>/<code>eth</code>/<code>bsc</code>); accepts <code>mainnet</code> / <code>nile</code> aliases</td><td>Yes</td><td><strong>Required</strong>: <code>network: string</code> (key or alias) · <strong>Optional</strong>: <code>family: "tron" \| "eth" \| "bsc"</code></td></tr><tr><td><code>get_network</code></td><td>Show per-family default networks</td><td>No</td><td>—</td></tr><tr><td><code>get_wallet_mode</code></td><td>Show current signing mode and addresses</td><td>No</td><td><strong>Optional</strong>: <code>network</code></td></tr><tr><td><code>set_wallet_mode</code></td><td>Switch signing mode: <code>agent</code> / <code>browser</code></td><td>Yes</td><td><strong>Required</strong>: <code>mode: "browser" \| "agent"</code> · <strong>Optional</strong>: <code>network</code></td></tr><tr><td><code>connect_browser_wallet</code></td><td>Connect a browser wallet and activate browser mode</td><td>Yes</td><td><strong>Optional</strong>: <code>network</code>, <code>address: string</code></td></tr><tr><td><code>get_wallet_address</code></td><td>Show the current address for the target network</td><td>No</td><td><strong>Optional</strong>: <code>network</code></td></tr><tr><td><code>list_wallets</code></td><td>List wallets with <code>tron</code> and <code>evm</code> active pointers</td><td>No</td><td>—</td></tr><tr><td><code>set_active_wallet</code></td><td>Switch active wallet by ID (optional <code>walletType: tron/evm</code>)</td><td>Yes</td><td><strong>Required</strong>: <code>walletId: string</code> · <strong>Optional</strong>: <code>walletType: "tron" \| "evm"</code></td></tr><tr><td><code>import_wallet</code></td><td>Import a private key / mnemonic into the encrypted keystore</td><td>Yes</td><td><strong>Required</strong>: <code>walletType: "tron" \| "evm"</code>, <code>secretType: "private_key" \| "mnemonic"</code>, <code>secret: string</code> · <strong>Optional</strong>: <code>index: int ≥ 0</code> (mnemonic derivation index, default <code>0</code>)</td></tr></tbody></table>
 
-#### PSM
+#### Common <a href="#id-16" id="id-16"></a>
 
-<table data-header-hidden data-full-width="false"><thead><tr><th width="229.89453125"></th><th width="455.41796875"></th><th width="242.421875"></th></tr></thead><tbody><tr><td>Tool</td><td>Description</td><td>Write?</td></tr><tr><td><code>get_psm_status</code></td><td>Inspect PSM fees and enablement</td><td>No</td></tr><tr><td><code>psm_swap_to_usdd</code></td><td>Swap gem into USDD</td><td>Yes</td></tr><tr><td><code>psm_swap_from_usdd</code></td><td>Swap USDD into gem</td><td>Yes</td></tr></tbody></table>
+<table><thead><tr><th width="204.52734375">Tool</th><th width="230.18359375">Description</th><th width="95.30078125">Write?</th><th>Input schema</th></tr></thead><tbody><tr><td><code>get_protocol_overview</code></td><td>Protocol addresses, ilks, PSMs, debt ceilings</td><td>No</td><td><strong>Optional</strong>: <code>network</code></td></tr><tr><td><code>get_supported_ilks</code></td><td>Configured collateral types and PSM joins</td><td>No</td><td><strong>Optional</strong>: <code>network</code></td></tr><tr><td><code>get_native_balance</code></td><td>Read TRX / ETH / BNB balance</td><td>No</td><td><strong>Optional</strong>: <code>owner: string</code> (defaults to active wallet), <code>network</code></td></tr><tr><td><code>get_token_balance</code></td><td>Read ERC20 / TRC20 balance</td><td>No</td><td><strong>Required</strong>: <code>token: string</code> (contract) · <strong>Optional</strong>: <code>owner: string</code>, <code>decimals: int > 0</code>, <code>network</code></td></tr><tr><td><code>check_allowance</code></td><td>Read allowance, optionally compare against an <code>amount</code></td><td>No</td><td><strong>Required</strong>: <code>token: string</code>, <code>spender: string</code> · <strong>Optional</strong>: <code>owner: string</code>, <code>amount: string</code> (human-readable), <code>decimals: int > 0</code>, <code>network</code></td></tr><tr><td><code>approve_token</code></td><td>Approve a token allowance</td><td>Yes</td><td><strong>Required</strong>: <code>token: string</code>, <code>spender: string</code>, <code>amount: string</code> (human-readable or <code>"max"</code>) · <strong>Optional</strong>: <code>decimals: int > 0</code>, <code>network</code></td></tr></tbody></table>
 
-#### USDD Savings
+#### Vault <a href="#id-17" id="id-17"></a>
 
-<table data-header-hidden><thead><tr><th width="230.07421875"></th><th width="450.2734375"></th><th></th></tr></thead><tbody><tr><td>Tool</td><td>Description</td><td>Write?</td></tr><tr><td><code>get_savings_status</code></td><td>Show USDD Savings metrics</td><td>No</td></tr><tr><td><code>deposit_savings</code></td><td>Deposit USDD into <code>sUSDD</code></td><td>Yes</td></tr><tr><td><code>withdraw_savings</code></td><td>Withdraw USDD from <code>sUSDD</code></td><td>Yes</td></tr></tbody></table>
+<table><thead><tr><th width="190.30859375">Tool</th><th width="230.62890625">Description</th><th width="94.859375">Write?</th><th>Input schema</th></tr></thead><tbody><tr><td><code>get_oracle_status</code></td><td>Inspect oracle and liquidation configuration for an ilk</td><td>No</td><td><strong>Required</strong>: <code>ilk: string</code> (e.g. <code>TRX-A</code>, <code>WBTC-A</code>, <code>USDT-A</code>, <code>PSM-USDT</code>) · <strong>Optional</strong>: <code>network</code></td></tr><tr><td><code>get_user_vaults</code></td><td>List vault IDs for a wallet</td><td>No</td><td><strong>Optional</strong>: <code>address: string</code>, <code>network</code></td></tr><tr><td><code>get_vault_summary</code></td><td>Collateral, debt, and liquidation metrics</td><td>No</td><td><strong>Required</strong>: <code>cdpId: string</code> · <strong>Optional</strong>: <code>network</code></td></tr><tr><td><code>analyze_vault_risk</code></td><td>Risk summary with warnings</td><td>No</td><td><strong>Required</strong>: <code>cdpId: string</code> · <strong>Optional</strong>: <code>network</code></td></tr><tr><td><code>open_vault</code></td><td>Open a new vault via DSProxy</td><td>Yes</td><td><strong>Required</strong>: <code>ilk: string</code> · <strong>Optional</strong>: <code>network</code></td></tr><tr><td><code>deposit_and_mint</code></td><td>Open-and-mint, or add collateral and mint (idempotent: reuses an existing vault for the same ilk)</td><td>Yes</td><td><strong>Required</strong>: <code>ilk: string</code>, <code>collateralAmount: string</code>, <code>drawAmount: string</code> · <strong>Optional</strong>: <code>cdpId: string</code> (reuses if omitted), <code>transferFrom: boolean</code> (default <code>true</code>), <code>network</code></td></tr><tr><td><code>mint_usdd</code></td><td>Draw more USDD from a vault</td><td>Yes</td><td><strong>Required</strong>: <code>cdpId: string</code>, <code>amount: string</code> · <strong>Optional</strong>: <code>network</code></td></tr><tr><td><code>repay_usdd</code></td><td>Repay vault debt</td><td>Yes</td><td><strong>Required</strong>: <code>cdpId: string</code>, <code>amount: string</code> · <strong>Optional</strong>: <code>network</code></td></tr><tr><td><code>withdraw_collateral</code></td><td>Withdraw collateral from a vault</td><td>Yes</td><td><strong>Required</strong>: <code>cdpId: string</code>, <code>ilk: string</code>, <code>amount: string</code> · <strong>Optional</strong>: <code>network</code></td></tr><tr><td><code>close_vault</code></td><td>Wipe all debt and free all collateral</td><td>Yes</td><td><strong>Required</strong>: <code>cdpId: string</code>, <code>ilk: string</code>, <code>amountToFree: string</code> · <strong>Optional</strong>: <code>network</code></td></tr></tbody></table>
 
-#### Token Transfers <a href="#token-transfers" id="token-transfers"></a>
+#### PSM <a href="#id-18" id="id-18"></a>
+
+<table><thead><tr><th width="189.68359375">Tool</th><th width="229.921875">Description</th><th width="94.9296875">Write?</th><th>Input schema</th></tr></thead><tbody><tr><td><code>get_psm_status</code></td><td>PSM fees and enablement</td><td>No</td><td><strong>Required</strong>: <code>market: string</code> (e.g. <code>PSM-USDT</code>) · <strong>Optional</strong>: <code>network</code></td></tr><tr><td><code>get_psm_metrics</code></td><td>PSM route metrics (from / to / available / fee)</td><td>No</td><td><strong>Required</strong>: <code>market: string</code> · <strong>Optional</strong>: <code>network</code></td></tr><tr><td><code>psm_swap_to_usdd</code></td><td>Swap gem into USDD</td><td>Yes</td><td><strong>Required</strong>: <code>market: string</code>, <code>amount: string</code> · <strong>Optional</strong>: <code>network</code></td></tr><tr><td><code>psm_swap_from_usdd</code></td><td>Swap USDD into gem</td><td>Yes</td><td><strong>Required</strong>: <code>market: string</code>, <code>amount: string</code> · <strong>Optional</strong>: <code>network</code></td></tr></tbody></table>
+
+#### USDD Savings <a href="#id-19" id="id-19"></a>
+
+<table><thead><tr><th width="189.55859375">Tool</th><th width="230.3671875">Description</th><th width="95.55859375">Write?</th><th>Input schema</th></tr></thead><tbody><tr><td><code>get_savings_status</code></td><td>USDD Savings metrics</td><td>No</td><td><strong>Optional</strong>: <code>network</code></td></tr><tr><td><code>deposit_savings</code></td><td>Deposit USDD to receive sUSDD</td><td>Yes</td><td><strong>Required</strong>: <code>amount: string</code> · <strong>Optional</strong>: <code>network</code></td></tr><tr><td><code>withdraw_savings</code></td><td>Redeem USDD from sUSDD</td><td>Yes</td><td><strong>Required</strong>: <code>amount: string</code> · <strong>Optional</strong>: <code>network</code></td></tr></tbody></table>
+
+#### Token Transfers <a href="#id-20" id="id-20"></a>
 
 Two-step preview → confirm flow for safe asset transfers. The AI **must** present the transfer details to the user and wait for explicit confirmation before executing.
 
-<table><thead><tr><th width="230.0390625">Tool</th><th width="450.44921875">Description</th><th>Write?</th></tr></thead><tbody><tr><td><code>prepare_token_transfer</code></td><td>Preview a native or token transfer; returns a <code>confirmationId</code> and transfer details for user review</td><td>No</td></tr><tr><td><code>confirm_token_transfer</code></td><td>Execute a previously prepared transfer after user has explicitly confirmed</td><td>Yes</td></tr></tbody></table>
+Supports: TRX, TRC20, ETH / BNB, ERC20.\
+Pending confirmations expire after 10 minutes&#x20;
 
-Supports:
+<table><thead><tr><th width="200.34765625">Tool</th><th width="220.10546875">Description</th><th width="94.984375">Write?</th><th>Input schema</th></tr></thead><tbody><tr><td><code>prepare_token_transfer</code></td><td>Preview a transfer; returns a <code>confirmationId</code> and details</td><td>No</td><td><strong>Required</strong>: <code>to: string</code>, <code>amount: string</code> (human-readable) · <strong>Optional</strong>: <code>tokenAddress: string</code> (omit for native), <code>decimals: int > 0</code>, <code>network</code></td></tr><tr><td><code>confirm_token_transfer</code></td><td>Execute the previewed transfer after user confirmation</td><td>Yes</td><td><strong>Required</strong>: <code>confirmationId: string</code>, <code>confirm: boolean</code> (pass <code>false</code> to cancel)</td></tr></tbody></table>
 
-* **TRX** (TRON native)
-* **TRC20** tokens (USDD, USDT, WBTC, etc.)
-* **ETH / BNB** (EVM native)
-* **ERC20** tokens on Ethereum and BSC
+#### Protocol Metrics <a href="#id-21" id="id-21"></a>
 
-#### Protocol Metrics <a href="#protocol-metrics" id="protocol-metrics"></a>
+<table><thead><tr><th width="214.44140625">Tool</th><th width="225.484375">Description</th><th width="95.44140625">Write?</th><th>Input schema</th></tr></thead><tbody><tr><td><code>get_protocol_metrics</code></td><td>Aggregated USDD protocol metrics</td><td>No</td><td>—</td></tr><tr><td><code>get_chain_metrics</code></td><td>Chain-level metrics for <code>tron</code> / <code>eth</code> / <code>bsc</code></td><td>No</td><td><strong>Required</strong>: <code>chain: "tron" \| "eth" \| "bsc"</code></td></tr><tr><td><code>get_collateral_prices</code></td><td>Latest highest-price data per collateral</td><td>No</td><td>—</td></tr><tr><td><code>get_psm_metrics</code></td><td>PSM route metrics (from / to / available / fee) — also listed under §8.4 PSM</td><td>No</td><td><strong>Required</strong>: <code>market: string</code> · <strong>Optional</strong>: <code>network</code></td></tr></tbody></table>
 
-Read-only analytics from mainnet data feeds.
+#### Treasury <a href="#id-22" id="id-22"></a>
 
-<table><thead><tr><th width="230.390625">Tool</th><th width="449.55078125">Description</th><th>Write?</th></tr></thead><tbody><tr><td><code>get_protocol_metrics</code></td><td>Aggregated USDD protocol metrics (mainnet)</td><td>No</td></tr><tr><td><code>get_chain_metrics</code></td><td>Chain-level metrics for <code>tron</code>, <code>eth</code>, or <code>bsc</code></td><td>No</td></tr><tr><td><code>get_collateral_prices</code></td><td>Latest collateral highest-price data from website API</td><td>No</td></tr><tr><td><code>get_psm_metrics</code></td><td>PSM route metrics: fromToken, toToken, available liquidity, fees</td><td>No</td></tr></tbody></table>
+<table><thead><tr><th width="209.61328125">Tool</th><th width="240.4765625">Description</th><th width="94.671875">Write?</th><th>Input schema</th></tr></thead><tbody><tr><td><code>get_treasury_summary</code></td><td>Latest USDD treasury report summary</td><td>No</td><td>—</td></tr><tr><td><code>get_jst_buyback_stats</code></td><td>JST buyback and burn statistics</td><td>No</td><td>—</td></tr></tbody></table>
 
-#### Treasury <a href="#treasury" id="treasury"></a>
+#### Smart Allocator <a href="#id-23" id="id-23"></a>
 
-<table><thead><tr><th width="229.87109375">Tool</th><th width="449.95703125">Description</th><th>Write?</th></tr></thead><tbody><tr><td><code>get_treasury_summary</code></td><td>Latest USDD treasury report summary (mainnet)</td><td>No</td></tr><tr><td><code>get_jst_buyback_stats</code></td><td>JST buyback and burn statistics from treasury data</td><td>No</td></tr></tbody></table>
-
-#### Smart Allocator
-
-<table><thead><tr><th width="230.1171875">Tool</th><th width="449.6015625">Description</th><th>Write?</th></tr></thead><tbody><tr><td><code>get_smart_allocator_overview</code></td><td>Smart Allocator overview: debt, invested amount, earnings, APY</td><td>No</td></tr><tr><td><code>get_assets_breakdown</code></td><td>Invested-asset breakdown by <code>protocol</code>, <code>network</code>, or <code>asset</code></td><td>No</td></tr><tr><td><code>get_proof_of_reserve</code></td><td>Proof-of-reserve style platform investment details</td><td>No</td></tr><tr><td><code>get_debt_overview</code></td><td>Debt overview grouped by network vault</td><td>No</td></tr></tbody></table>
+<table><thead><tr><th width="207.82421875">Tool</th><th width="229.62890625">Description</th><th width="95.44140625">Write?</th><th>Input schema</th></tr></thead><tbody><tr><td><code>get_smart_allocator_overview</code></td><td>Overview: debt, invested amount, earnings, APY</td><td>No</td><td>—</td></tr><tr><td><code>get_assets_breakdown</code></td><td>Breakdown by <code>protocol</code> / <code>network</code> / <code>asset</code></td><td>No</td><td><strong>Required</strong>: <code>dimension: "protocol" \| "network" \| "asset"</code></td></tr><tr><td><code>get_proof_of_reserve</code></td><td>Proof-of-reserve style platform investment details</td><td>No</td><td>—</td></tr><tr><td><code>get_debt_overview</code></td><td>Debt overview grouped by vault per network</td><td>No</td><td>—</td></tr></tbody></table>
 
 ### Prompts
 
 <table data-header-hidden><thead><tr><th width="230.25"></th><th></th></tr></thead><tbody><tr><td>Prompt</td><td>Description</td></tr><tr><td><code>open_usdd_vault</code></td><td>Open a vault and verify post-trade risk</td></tr><tr><td><code>manage_vault_lifecycle</code></td><td>Run full vault lifecycle flows</td></tr><tr><td><code>use_psm</code></td><td>Use PSM with fee checks</td></tr><tr><td><code>use_savings</code></td><td>Use USDD Savings with inspection and verification</td></tr><tr><td><code>review_vault_risk</code></td><td>Explain risk for a vault</td></tr><tr><td><code>repay_and_close_vault</code></td><td>Repay and close with verification</td></tr><tr><td><code>transfer_tokens</code></td><td>Transfer tokens with two-step preview and explicit confirmation</td></tr></tbody></table>
-
-### Architecture
-
-```
-mcp-server-usdd/
-├── src/
-│   ├── core/
-│   │   ├── chains.ts
-│   │   ├── abis.ts
-│   │   ├── tools.ts
-│   │   ├── prompts.ts
-│   │   ├── resources.ts
-│   │   ├── browser-signer.ts
-│   │   └── services/
-│   │       ├── clients.ts
-│   │       ├── contracts.ts
-│   │       ├── protocol.ts
-│   │       ├── vault.ts
-│   │       ├── psm.ts
-│   │       ├── savings.ts
-│   │       ├── tokens.ts
-│   │       ├── transfer.ts        ← token/native transfer (prepare + confirm)
-│   │       ├── treasury.ts        ← treasury report and JST buyback stats
-│   │       ├── smart-allocator.ts ← Smart Allocator analytics
-│   │       ├── website-metrics.ts ← protocol metrics, chain metrics, collateral prices
-│   │       ├── wallet.ts
-│   │       └── utils.ts
-│   ├── index.ts
-│   └── server/
-│       ├── server.ts
-│       └── http-server.ts
-└── build/
-```
 
 ### Notes
 
@@ -263,16 +228,62 @@ mcp-server-usdd/
 * TRON, ETH, BSC, and internal testnet deployments have similar protocol structure but different addresses and token decimals.
 * This version intentionally excludes migration and auction actions so we can iterate the Vault + PSM + USDD Savings core first.
 
-### Security Considerations
+### Security Model <a href="#security-model" id="security-model"></a>
+
+#### Wallet & keys <a href="#id-12.1-wallet-26-keys-ready-to-publish-e2-80-94-verbatim-from-readme" id="id-12.1-wallet-26-keys-ready-to-publish-e2-80-94-verbatim-from-readme"></a>
 
 * Private keys are encrypted and stored locally in `~/.agent-wallet/`.
 * Private keys are never returned by MCP tools.
 * The optional `AGENT_WALLET_PASSWORD` is intended for automation and CI environments.
-* Write operations should be treated as state-changing actions and reviewed carefully before execution.
+* Never share local MCP client configuration files if they contain private keys or sensitive RPC credentials.
+
+#### HITL boundary  <a href="#id-31" id="id-31"></a>
+
+Only one HITL boundary is **enforced by the server**: `confirm_token_transfer` requires a `confirmationId` previously issued by `prepare_token_transfer`, which expires after 10 minutes.
+
+The server also enforces one **session-level prompt**: before the first TRON write in any Claude session, the user must confirm the signing mode (`wallet.ts:465`).
+
+For all other write tools (`approve_token`, every vault write, PSM swaps, savings deposit/withdraw), HITL is enforced by the MCP host’s confirmation dialog — the server does not intercept the call. Documentation should recommend that hosts confirm every tool marked `Write? = Yes` by default.
+
+#### Operational risk  <a href="#id-32" id="id-32"></a>
+
+* Treat write operations as state-changing actions and review them carefully.
 * Vault prompts include risk-review steps so borrowing decisions are checked against current collateral health.
 * Test on a safe environment or with small amounts before using mainnet-sized positions.
 * Be cautious with large or unlimited token approvals when using `approve_token`.
-* Never share local MCP client configuration files if they contain private keys or sensitive RPC credentials.
+
+### Troubleshooting  <a href="#id-13.-troubleshooting-ready-to-publish-e2-80-94-only-verified-commands-e2-80-94-5bp0-5d" id="id-13.-troubleshooting-ready-to-publish-e2-80-94-only-verified-commands-e2-80-94-5bp0-5d"></a>
+
+#### Health check <a href="#id-36" id="id-36"></a>
+
+```bash
+# stdio: after npm start, you should see on stderr:
+#   @usdd/mcp-server-usdd v1.0.0 initialized
+#   Supported networks: tron, eth, bsc, tron_nile, eth_sepolia, bsc_testnet
+#   ...
+npm start
+
+# HTTP: liveness only, does NOT provide an MCP transport
+curl http://127.0.0.1:3101/health
+```
+
+#### MCP Inspector <a href="#id-37" id="id-37"></a>
+
+```bash
+npx @modelcontextprotocol/inspector npx -y @usdd/mcp-server-usdd
+```
+
+#### Common errors <a href="#id-38" id="id-38"></a>
+
+<table><thead><tr><th width="247.48046875">Symptom / error message</th><th width="142.46484375">Source</th><th>Fix</th></tr></thead><tbody><tr><td><code>Unsupported network: …</code></td><td><code>chains.ts</code></td><td>Use a key from §3 (note underscores)</td></tr><tr><td><code>Insufficient … balance.</code></td><td><code>transfer.ts</code></td><td>Check on-chain balance</td></tr><tr><td><code>Unable to detect token decimals …</code></td><td><code>transfer.ts</code></td><td>Pass <code>decimals</code> explicitly to <code>prepare_token_transfer</code></td></tr><tr><td><code>Unknown confirmationId …</code></td><td><code>tools.ts</code></td><td>Already consumed or server restarted; call prepare again</td></tr><tr><td><code>This confirmation has expired.</code></td><td><code>tools.ts</code></td><td>Over 10 minutes; call prepare again</td></tr><tr><td><code>STOP — TRON wallet signing mode has not been confirmed …</code></td><td><code>wallet.ts</code></td><td>Call <code>set_wallet_mode</code> or confirm the default mode</td></tr><tr><td><code>Browser wallet signing is only supported for TRON networks …</code></td><td><code>wallet.ts</code></td><td>Use agent mode for EVM writes</td></tr></tbody></table>
+
+### Versioning & Compatibility <a href="#id-14.-versioning-26-compatibility-ready-to-publish-e2-80-94-5bp0-5d" id="id-14.-versioning-26-compatibility-ready-to-publish-e2-80-94-5bp0-5d"></a>
+
+<table><thead><tr><th width="185.5078125">Field</th><th width="353.3359375">Value</th><th>Source</th></tr></thead><tbody><tr><td>Package name</td><td><code>@usdd/mcp-server-usdd</code></td><td><code>package.json</code></td></tr><tr><td>Package version</td><td><strong><code>1.0.3</code></strong></td><td><code>package.json</code></td></tr><tr><td>MCP SDK</td><td><code>@modelcontextprotocol/sdk@1.27.1</code></td><td><code>package.json</code></td></tr><tr><td>Node.js</td><td><code>>= 20.0.0</code></td><td><code>package.json#engines</code></td></tr><tr><td>TypeScript</td><td><code>5.9.3</code></td><td>devDependencies</td></tr><tr><td>License</td><td><strong>MIT</strong> (SPDX: <code>MIT</code>), Copyright © 2026 USDD</td><td><code>LICENSE</code></td></tr><tr><td>Repository</td><td><code>https://github.com/decentralized-usd/mcp-server-usdd</code></td><td><code>package.json</code></td></tr></tbody></table>
+
+**Transports**:
+
+<table><thead><tr><th width="118.03515625">Transport</th><th>Command</th><th>Status</th></tr></thead><tbody><tr><td>stdio</td><td><code>npm start</code> / <code>npx -y @usdd/mcp-server-usdd</code></td><td>Production-ready</td></tr><tr><td>HTTP</td><td><code>npm run start:http</code></td><td>Currently exposes only <code>/health</code>; no MCP transport mounted. Use for liveness probes only.</td></tr></tbody></table>
 
 ### Example Conversations
 
@@ -319,8 +330,39 @@ mcp-server-usdd/
 * “Show me the Smart Allocator proof of reserve” → AI calls `get_proof_of_reserve` and details each platform investment with amounts and verification status.
 * “What does the Smart Allocator debt look like by network?” → AI calls `get_debt_overview` and summarizes debt positions grouped by TRON/ETH/BSC vaults.
 
+### Architecture
+
+```
+mcp-server-usdd/
+├── src/
+│   ├── core/
+│   │   ├── chains.ts
+│   │   ├── abis.ts
+│   │   ├── tools.ts
+│   │   ├── prompts.ts
+│   │   ├── resources.ts
+│   │   ├── browser-signer.ts
+│   │   └── services/
+│   │       ├── clients.ts
+│   │       ├── contracts.ts
+│   │       ├── protocol.ts
+│   │       ├── vault.ts
+│   │       ├── psm.ts
+│   │       ├── savings.ts
+│   │       ├── tokens.ts
+│   │       ├── transfer.ts        ← token/native transfer (prepare + confirm)
+│   │       ├── treasury.ts        ← treasury report and JST buyback stats
+│   │       ├── smart-allocator.ts ← Smart Allocator analytics
+│   │       ├── website-metrics.ts ← protocol metrics, chain metrics, collateral prices
+│   │       ├── wallet.ts
+│   │       └── utils.ts
+│   ├── index.ts
+│   └── server/
+│       ├── server.ts
+│       └── http-server.ts
+└── build/
+```
 
 
-<br>
 
 <br>
