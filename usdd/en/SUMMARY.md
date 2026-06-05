@@ -63,6 +63,19 @@
   * [Example Conversations](ai-support/mcp-server/README.md#example-conversations)
   * [Architecture](ai-support/mcp-server/README.md#architecture)
 * [AI / LLMs](ai-support/ai-llms.md)
+* [USDD Skills](ai-support/usdd-skills/README.md)
+  * [Overview](ai-support/usdd-skills/README.md#id-2)
+  * [Which Mode to Use](ai-support/usdd-skills/README.md#id-6)
+  * [Requirements](ai-support/usdd-skills/README.md#id-8)
+  * [Installation](ai-support/usdd-skills/README.md#id-9)
+  * [Client Configuration](ai-support/usdd-skills/README.md#id-16)
+  * [Skill Catalog](ai-support/usdd-skills/README.md#id-24)
+  * [Tool Reference](ai-support/usdd-skills/README.md#id-26)
+  * [Agent Workflows](ai-support/usdd-skills/README.md#id-30)
+  * [Safety & Boundaries](ai-support/usdd-skills/README.md#id-37)
+  * [Data & Privacy](ai-support/usdd-skills/README.md#id-44)
+  * [Error & Reliability Contract](ai-support/usdd-skills/README.md#id-50)
+  * [Troubleshooting](ai-support/usdd-skills/README.md#id-54)
 
 ## GOVERNANCE
 
