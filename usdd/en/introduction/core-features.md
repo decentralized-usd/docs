@@ -11,7 +11,7 @@ USDD stands out as a next-generation stablecoin built on principles of decentral
 4. **Seamless DeFi Integration**\
    USDD integrates effortlessly into the broader DeFi ecosystem, enabling use cases like lending, borrowing, staking, and trading. This interoperability makes it a versatile tool for both individual users and institutions.
 5. **Freeze-Free Transactions**\
-   USDD guarantees that no centralized authority can freeze user funds, providing users with full control of their assets at all times.
+   Once USDD is held in a self-custodial wallet on-chain, no centralized authority can directly freeze the USDD token itself.
 6. **Multichain**\
    A fully decentralized stablecoin supporting TRON, Ethereum, BNB Chain.
 
