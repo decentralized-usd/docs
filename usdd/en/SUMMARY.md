@@ -90,3 +90,4 @@
 
 * [Terms of Use](legals/terms-of-use.md)
 * [Privacy Policy](legals/privacy-policy.md)
+* [USDD Brand Assets License and Terms of Use](legals/usdd-brand-assets-license-and-terms-of-use.md)
