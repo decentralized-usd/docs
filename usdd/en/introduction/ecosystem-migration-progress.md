@@ -18,7 +18,6 @@ As the transition to USDD 2.0 progresses, various ecosystem partners have succes
 * [**JustLend DAO**](https://app.justlend.org/homeNew?)
 * [**SUN.io**](https://sunswap.com/#/home)
 * [**CoinW**](https://www.coinw.com/spot/usddusdt)
-* [**AscendEX**](https://ascendex.com/en-us/cashtrade-spottrading/usdt/usdd)
 * [**LBANK**](https://www.lbank.com/trade/usdd_usdt)
 * [**Mitmart**](https://www.bitmart.com/)
 * [**AEON**](https://aeon.xyz/)
