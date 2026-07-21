@@ -1,5 +1,5 @@
 ---
-description: (Last updated at 2025.01.04)
+description: (Last updated at 2026.07.21)
 ---
 
 # Terms of Use
