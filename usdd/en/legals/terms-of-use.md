@@ -18,7 +18,7 @@ To access or use the Interface, you must be able to form a legally binding contr
 
 * You are located in, under the control of, or a national or resident of any country or region that is subject to economic sanctions.
 * Your use of the Interface would violate applicable laws or regulations.
-* You are a resident or citizen of restricted regions, including but not limited to United States, United Kingdom, the European Union, Hong Kong, Japan, Singapore, Canada, Afghanistan, Belarus, Burma (Myanmar), Central African Republic, Crimea, Cuba, Democratic Republic of Congo, Donetsk, Ethiopia, Iran, Iraq, Lebanon, Libya, Luhansk, Mali, North Korea (DPRK), Russia, Somalia, South Sudan, Sudan, Syria, Venezuela, Yemen, and Zimbabwe.
+* You are a resident or citizen of restricted regions, including but not limited to United States, United Kingdom, the European Union, Hong Kong, Japan, Singapore, Canada, Afghanistan, Belarus, Burma (Myanmar), Central African Republic, Cuba, Democratic Republic of Congo, Ethiopia, Iran, Iraq, Lebanon, Libya, Mali, North Korea (DPRK), Russia, Somalia, South Sudan, Sudan, Syria, Ukraine, Venezuela, Yemen, and Zimbabwe.
 
 #### 3. Proprietary Rights
 
