@@ -9,6 +9,10 @@
 * [Contract Addresses](introduction/collateral-asset-contract-addresses.md)
 * [Ecosystem Migration Progress](introduction/ecosystem-migration-progress.md)
 
+***
+
+* [Ecosystem Migration Progress](ecosystem-migration-progress.md)
+
 ## SYSTEM ARCHITECTURE
 
 * [System Architecture](system-architecture/system-architecture.md)

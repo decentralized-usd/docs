@@ -1,3 +1,7 @@
+---
+hidden: true
+---
+
 # Ecosystem Migration Progress
 
 As the transition to USDD 2.0 progresses, various ecosystem partners have successfully migrated from USDD 1.0. Below is a categorized list of platforms and projects that now support USDD 2.0:
