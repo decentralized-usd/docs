@@ -95,7 +95,3 @@
 * [Terms of Use](legals/terms-of-use.md)
 * [Privacy Policy](legals/privacy-policy.md)
 * [USDD Brand Assets License and Terms of Use](legals/usdd-brand-assets-license-and-terms-of-use.md)
-
-***
-
-* [0x7a69D5BfC49bC48AF6A2ed4969d32752362793Fc](0x7a69d5bfc49bc48af6a2ed4969d32752362793fc.md)
