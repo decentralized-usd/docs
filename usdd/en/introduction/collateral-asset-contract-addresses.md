@@ -14,6 +14,8 @@ Collateral Contracts
 * USDT-A: [TDUkQbjrXs6xUbxGCLknWwJHxVTdysXBhy](https://tronscan.org/#/contract/TDUkQbjrXs6xUbxGCLknWwJHxVTdysXBhy)
 * PSM-USDT: [TSUYvQ5tdd3DijCD1uGunGLpftHuSZ12sQ](https://tronscan.org/#/contract/TSUYvQ5tdd3DijCD1uGunGLpftHuSZ12sQ)
 * SA001-A: [TXdYNjXaHn3c1whomRpzCkaFbjfCffMFGf](https://tronscan.org/#/contract/TXdYNjXaHn3c1whomRpzCkaFbjfCffMFGf)
+* WBTC- A：[TDea6uDwDgxkUwyEefhqMPij6NzRiPrVV1](https://tronscan.org/contract/TDea6uDwDgxkUwyEefhqMPij6NzRiPrVV1/code)
+* WBTC-B: [TRoqYfXY7ZLZcjeiTQYNu2vDhJPeJYNf1w](https://tronscan.org/contract/TRoqYfXY7ZLZcjeiTQYNu2vDhJPeJYNf1w/code)
 
 PSM Contracts
 
