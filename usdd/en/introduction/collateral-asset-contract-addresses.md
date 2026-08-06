@@ -14,6 +14,7 @@ Collateral Contracts
 * USDT-A: [TDUkQbjrXs6xUbxGCLknWwJHxVTdysXBhy](https://tronscan.org/#/contract/TDUkQbjrXs6xUbxGCLknWwJHxVTdysXBhy)
 * PSM-USDT: [TSUYvQ5tdd3DijCD1uGunGLpftHuSZ12sQ](https://tronscan.org/#/contract/TSUYvQ5tdd3DijCD1uGunGLpftHuSZ12sQ)
 * SA001-A: [TXdYNjXaHn3c1whomRpzCkaFbjfCffMFGf](https://tronscan.org/#/contract/TXdYNjXaHn3c1whomRpzCkaFbjfCffMFGf)
+*
 
 PSM Contracts
 
@@ -23,6 +24,10 @@ PSM Contracts
 
 
 🌐 Ethereum Network
+
+Collateral Contracts
+
+* SA001-A: [0x7a69D5BfC49bC48AF6A2ed4969d32752362793Fc](https://etherscan.io/address/0x7a69D5BfC49bC48AF6A2ed4969d32752362793Fc)
 
 PSM Contracts
 
@@ -39,6 +44,10 @@ USDD Savings
 
 
 🌐 BNB Chain Network
+
+Collateral Contracts
+
+* SA001-A: [0x062a738465F30EBe6dD06cFAd3256Ba783EDf000](https://bscscan.com/address/0x062a738465F30EBe6dD06cFAd3256Ba783EDf000)
 
 PSM Contracts
 
