@@ -32,6 +32,7 @@
 * [PSM](user-guide/psm-peg-stability-module.md)
 * [Migrate](user-guide/migrate.md)
 * [USDD Savings](user-guide/usdd-savings.md)
+* [GasFree Guide](user-guide/gasfree-guide.md)
 
 ## DEVELOPERS
 
