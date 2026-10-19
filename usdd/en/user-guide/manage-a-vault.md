@@ -7,9 +7,9 @@ If you’ve already **opened a Vault**, you can manage it through various action
 Adding more collateral to an existing Vault increases the Collateralization Ratio, reducing the risk of liquidation.
 
 * Enter the amount of collateral you wish to deposit.
-*   The updated collateralization ratio and other key metrics will be displayed on the right side of the page, providing a clear view of how this action affects your Vault's stability.
+* The updated collateralization ratio and other key metrics will be displayed on the right side of the page, providing a clear view of how this action affects your Vault's stability.
 
-    <figure><img src="../.gitbook/assets/4 (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Add Collateral.png" alt=""><figcaption></figcaption></figure>
 
 **2. Mint More USDD**
 
