@@ -84,6 +84,8 @@ Agents must call the MCP tools. Skill workflows explicitly say not to fetch upst
 
 The local analytics MCP does not use a `NETWORK` value. Network selection for official MCP tools is passed in tool arguments as `network`.
 
+**Official MCP compatibility:** Address-resolution workflows are documented against `@usdd/mcp-server-usdd@1.0.4`, which exposes both `get_protocol_addresses` and `get_chainlog_address` and requires explicit `network` arguments. Verify the connected server version and its `tools/list` response; if either tool is unavailable, stop and install the documented release. References: [npm 1.0.4](https://www.npmjs.com/package/@usdd/mcp-server-usdd/v/1.0.4) and [source commit ccf1fb5](https://github.com/decentralized-usd/mcp-server-usdd/tree/ccf1fb52f796a2c4a69fa0aa67625dd5c705e2fe). See the MCP Server page for address response fields, cache TTL, stale-data warnings, and error handling.
+
 ***
 
 ### Installation <a href="#id-9" id="id-9"></a>
@@ -377,7 +379,9 @@ Every local analytics response adds:
 
 <table><thead><tr><th width="198.7109375">Group</th><th>Tools referenced by actual skills</th></tr></thead><tbody><tr><td>Wallet/network</td><td><code>get_supported_networks</code>, <code>set_network</code>, <code>get_network</code>, <code>connect_browser_wallet</code>, <code>set_wallet_mode</code>, <code>get_wallet_mode</code>, <code>get_wallet_address</code>, <code>list_wallets</code>, <code>import_wallet</code>, <code>set_active_wallet</code></td></tr><tr><td>Common preflight</td><td><code>get_native_balance</code>, <code>get_token_balance</code>, <code>check_allowance</code>, <code>approve_token</code></td></tr><tr><td>Protocol reads</td><td><code>get_protocol_addresses</code>, <code>get_chainlog_address</code>, <code>get_protocol_overview</code>, <code>get_supported_ilks</code>, <code>get_oracle_status</code>, <code>get_protocol_metrics</code>, <code>get_chain_metrics</code>, <code>get_collateral_prices</code></td></tr><tr><td>Vault</td><td><code>get_user_vaults</code>, <code>get_vault_summary</code>, <code>analyze_vault_risk</code>, <code>open_vault</code>, <code>deposit_and_mint</code>, <code>mint_usdd</code>, <code>repay_usdd</code>, <code>withdraw_collateral</code>, <code>close_vault</code></td></tr><tr><td>PSM</td><td><code>get_psm_status</code>, <code>get_psm_metrics</code>, <code>psm_swap_to_usdd</code>, <code>psm_swap_from_usdd</code></td></tr><tr><td>Savings</td><td><code>get_savings_status</code>, <code>deposit_savings</code>, <code>withdraw_savings</code></td></tr><tr><td>Token transfer</td><td><code>prepare_token_transfer</code>, <code>confirm_token_transfer</code></td></tr><tr><td>Treasury / allocator</td><td><code>get_treasury_summary</code>, <code>get_jst_buyback_stats</code>, <code>get_smart_allocator_overview</code>, <code>get_assets_breakdown</code>, <code>get_proof_of_reserve</code>, <code>get_debt_overview</code></td></tr></tbody></table>
 
-For full schemas, use the official MCP documentation/source for `@usdd/mcp-server-usdd`.
+For full tool schemas, see the [official MCP reference](https://docs.usdd.io/ai-support/mcp-server). For address-resolution parameters, cache behavior, and failure handling, see **Tools → Common → Address Resolution**.
+
+Before running address-dependent workflows, check the connected official MCP server’s `tools/list` response for both `get_protocol_addresses` and `get_chainlog_address`. The local analytics tool list does not verify the official MCP server’s capabilities.
 
 ***
 

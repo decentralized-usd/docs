@@ -12,15 +12,15 @@ Collateral Contracts
 * TRX-C: [TPUPPLTYLdbW4jxwD5g2T7ystxsR9HL2mt](https://tronscan.org/#/contract/TPUPPLTYLdbW4jxwD5g2T7ystxsR9HL2mt)
 * sTRX-A: [TKha7zcAXZMaaWzoVmUHtvVFqr9GeiChgJ](https://tronscan.org/#/contract/TKha7zcAXZMaaWzoVmUHtvVFqr9GeiChgJ)
 * USDT-A: [TDUkQbjrXs6xUbxGCLknWwJHxVTdysXBhy](https://tronscan.org/#/contract/TDUkQbjrXs6xUbxGCLknWwJHxVTdysXBhy)
-* PSM-USDT: [TSUYvQ5tdd3DijCD1uGunGLpftHuSZ12sQ](https://tronscan.org/#/contract/TSUYvQ5tdd3DijCD1uGunGLpftHuSZ12sQ)
+* PSM-USDT: [TBXW4hS5KYjjbJXDpnrPf4zhkLwrpUjbyz](https://tronscan.org/#/contract/TBXW4hS5KYjjbJXDpnrPf4zhkLwrpUjbyz)
 * SA001-A: [TXdYNjXaHn3c1whomRpzCkaFbjfCffMFGf](https://tronscan.org/#/contract/TXdYNjXaHn3c1whomRpzCkaFbjfCffMFGf)
 * WBTC- A：[TDea6uDwDgxkUwyEefhqMPij6NzRiPrVV1](https://tronscan.org/contract/TDea6uDwDgxkUwyEefhqMPij6NzRiPrVV1/code)
 * WBTC-B: [TRoqYfXY7ZLZcjeiTQYNu2vDhJPeJYNf1w](https://tronscan.org/contract/TRoqYfXY7ZLZcjeiTQYNu2vDhJPeJYNf1w/code)
 
 PSM Contracts
 
-* PSM-USDT: [TSUYvQ5tdd3DijCD1uGunGLpftHuSZ12sQ](https://tronscan.org/#/contract/TSUYvQ5tdd3DijCD1uGunGLpftHuSZ12sQ)
-* USDTJoin: [TBXW4hS5KYjjbJXDpnrPf4zhkLwrpUjbyz](https://tronscan.org/#/contract/TBXW4hS5KYjjbJXDpnrPf4zhkLwrpUjbyz)
+* PSM-USDT: [TBXW4hS5KYjjbJXDpnrPf4zhkLwrpUjbyz](https://tronscan.org/#/contract/TBXW4hS5KYjjbJXDpnrPf4zhkLwrpUjbyz)&#x20;
+* USDTJoin: [TSUYvQ5tdd3DijCD1uGunGLpftHuSZ12sQ](https://tronscan.org/#/contract/TSUYvQ5tdd3DijCD1uGunGLpftHuSZ12sQ)
 
 
 

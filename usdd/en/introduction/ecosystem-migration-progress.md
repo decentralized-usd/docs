@@ -2,12 +2,13 @@
 
 As the transition to USDD 2.0 progresses, various ecosystem partners have successfully migrated from USDD 1.0. Below is a categorized list of platforms and projects that now support USDD 2.0:
 
+**Network scope:** The current USDD application supports TRON, Ethereum, and BNB Chain. This ecosystem and migration list does not imply that every partner supports every chain, or that Vaults, PSM, Savings, and bridge routes have identical availability on each chain. Verify the selected network and token contract using [Contract Addresses](https://docs.usdd.io/introduction/collateral-asset-contract-addresses) and the relevant application. Historical USDDOLD or BTTC migration references are separate from current USDD protocol support.
+
 **🔹 Supported Chains**
 
 * **TRON**
 * **Ethereum**
 * **BNB Chain**
-* **BTTC**
 
 **🔹 Supported Exchanges & DeFi Platforms**
 

@@ -42,7 +42,7 @@
 
 ## Dog
 
-* `bark`:  A vault’s all debt is taken when this liquidation function is called.
+* `bark`: A vault’s all debt is taken when this liquidation function is called.
 * `ilk`
   * `chop`: Liquidation Penalty
   * `hole`: Max USDD needed to cover debt+fees of active auctions per ilk
@@ -50,23 +50,24 @@
 
 ## Clip
 
-* `buf`: Multiplicative factor to increase starting price&#x20;
-* `tail`: Time elapsed before auction reset&#x20;
-* `cusp`: Percentage drop before auction reset  &#x20;
-* `chip`: Percentage of tab to suck from vow to incentivize keepers &#x20;
-* `tip`: Flat fee to suck from vow to incentivize keepers     &#x20;
+* `buf`: Multiplicative factor to increase starting price
+* `tail`: Time elapsed before auction reset
+* `cusp`: Percentage drop before auction reset
+* `chip`: Percentage of tab to suck from vow to incentivize keepers
+* `tip`: Flat fee to suck from vow to incentivize keepers
 * `chost`: Cache the ilk dust times the ilk chop to prevent excessive SLOADs
 * `sale`
   * `pos`: Index in active array
-  * `tab`:USDD to raise&#x20;
+  * `tab`:USDD to raise
   * `usr`: Liquidated CDP
   * `tic`: Auction start time
   * `top`: Starting price
 
 ## Jug
 
-* `duty`: Collateral-specific, per-second stability fee contribution
-* `rho`: Time of last drip
+* **`duty`**: Collateral-specific, per-second stability fee contribution, stored with ray precision (`10^27` scaling).
+* **`base`**: Global, per-second stability fee contribution, stored with ray precision (`10^27` scaling).
+* **`rho`**: Unix timestamp of the last stability fee accrual for a collateral type.
 
 ## Median
 

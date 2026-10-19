@@ -15,15 +15,29 @@ When a Vault is liquidated, its collateral is moved into an auction process. Use
    1. To bid, you must first stake USDD, which will be used for purchasing collateral in the auction.
    2. Staked USDD can be withdrawn anytime if not used for a bid.
 4. **Place Your Bid**
-   1. Enter the amount of USDD you wish to bid.
-   2.  The platform will automatically calculate:
+   1. Enter the amount of USDD you wish to spend on the auction.
+   2.  The platform will display the following estimates:
 
-       1. Collateral Quantity: The amount of collateral you will receive, calculated as:\
-          **Collateral Quantity = Input USDD Amount / Auction Price**
-       2. Potential net Profit: The potential net profit you can earn if you sell the collateral at the current market price.
+       1.  The estimated amount of collateral you will receive at the quoted auction price:
 
-       Profit Calculation Formula:\
-       **Potential Net Profit = Input USDD Amount \* Market Price - Input USDD Amount \* Auction Price - Transaction fee**
+           **Collateral Quantity = Input USDD Amount ÷ Auction Price**
+       2.  Potential net Profit: The estimated profit from selling the purchased collateral at the quoted market price, after deducting the USDD spent and estimated transaction fees:
+
+           **Potential Net Profit = Collateral Quantity × Market Price − Input USDD Amount − Estimated Transaction Fees**
+
+       Equivalently:
+
+       **Potential Net Profit = (Input USDD Amount ÷ Auction Price) × Market Price − Input USDD Amount − Estimated Transaction Fees**
+
+       Auction Price and Market Price are expressed in **USDD per unit of collateral**. Estimated Transaction Fees must also be expressed in **USDD**.
+
+       **Example**
+
+       If you spend **100 USDD** at an auction price of **2 USDD per unit**, you will receive **50 units** of collateral. At a market price of **3 USDD per unit**, your estimated profit before transaction fees is:
+
+       **(100 ÷ 2) × 3 − 100 = 50 USDD**
+
+       These estimates are not guaranteed returns. Actual results depend on the final auction execution price, the sale price, and applicable fees.
 
        <figure><img src="../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
 5. **Monitor Auction Prices**

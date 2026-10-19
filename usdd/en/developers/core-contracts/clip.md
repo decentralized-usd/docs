@@ -16,9 +16,21 @@ Handles collateral auctions, where liquidated collateral is sold to cover bad de
   * Example Use: Kicking off an auction for a liquidated Vault.
 * `redo(id, kpr)`\
   Allows keepers to reinitialize a stale auction, ensuring auction prices remain relevant.
-* `take(id, amt, max, who data)`\
-  Users can participate in an auction by calling this function.yank(id)\
-  Cancels an auction when debt is repaid or resolved through other means.
+*   `take(id, amt, max, who, data)`<br>
+
+    Purchases collateral from an active auction at the current auction price, subject to the buyer’s maximum acceptable price.
+
+    * `id`: The auction ID.
+    * `amt`: The maximum amount of collateral to purchase, expressed with wad precision (`10^18` scaling).
+    * `max`: The maximum acceptable price in USDD per unit of collateral, expressed with ray precision (`10^27` scaling).
+    * `who`: The address receiving the collateral in the Vat and, when applicable, the callback recipient.
+    * `data`: Data passed to the optional callback. An empty value disables the callback.
+*   **`yank(id)`**
+
+    Cancels an active auction through an authorized call, for example during emergency shutdown or a governance action. Removes the auction, updates the liquidation accounting, and transfers the remaining collateral balance in the Vat to the caller.
+
+    * `id`: The auction ID.
+    * **Access restriction:** Only authorized addresses with `wards[msg.sender] == 1` can call this function.
 * `file(what, data)`\
   Configures auction parameters such as price decay rates or auction durations.
   * Example Parameters:

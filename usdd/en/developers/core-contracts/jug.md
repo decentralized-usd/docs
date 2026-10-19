@@ -11,11 +11,13 @@ Calculates and accrues stability fees on minted USDD. These fees ensure protocol
 
 ### Key Methods
 
-*   d`rip(ilk)`\
-    Performs stability fee collection for a specific collateral type when it is called. Calls `Vat.fold` to update the collateral's rate, total tracked debt, and Vow surplus;
+* `drip(ilk)`\
+  Accrues stability fees for the specified collateral type since its last accrual timestamp (`rho`). Calls `Vat.fold` to update the accumulated debt multiplier, system debt, and the Vow’s surplus balance.
+*   **`file(what, data)` / `file(ilk, what, data)`**
 
-    duty: Annualized stability fee rate.
-* `file(what, data) / file(what, ilk, data)`\
-  Configures global and per-collateral stability fee rates.
-  * Example Parameters:
-    * `duty`: Annualized stability fee rate.
+    Configures global or collateral-specific parameters.
+
+    * **`duty`**: The collateral-specific, per-second stability fee contribution, stored as a ray-scaled integer with a scaling factor of `10^27`. It is not an annualized percentage.
+    * **`base`**: The global, per-second stability fee contribution, also stored as a ray-scaled integer.
+
+    In the standard Jug calculation, the effective per-second compounding factor is **`(base + duty) / 10^27`**. Do not pass an annualized percentage directly as `duty`.

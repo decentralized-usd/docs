@@ -13,6 +13,6 @@ USDD stands out as a next-generation stablecoin built on principles of decentral
 5. **Freeze-Free Transactions**\
    Once USDD is held in a self-custodial wallet on-chain, no centralized authority can directly freeze the USDD token itself.
 6. **Multichain**\
-   A fully decentralized stablecoin supporting TRON, Ethereum, BNB Chain.
+   The current USDD application supports **TRON, Ethereum, and BNB Chain**. Token transfers and bridge or migration routes are distinct from protocol features such as Vaults, PSM, and Savings; availability, collateral types, and parameters depend on the selected network. Check the application and [Contract Addresses](https://docs.usdd.io/introduction/collateral-asset-contract-addresses) for that network before use. References to USDDOLD or historical BTTC migration routes do not establish current USDD protocol support on BTTC.
 
 These core features make USDD a robust and adaptable stablecoin, designed to empower its users while maintaining the highest standards of stability, security, and decentralization.
