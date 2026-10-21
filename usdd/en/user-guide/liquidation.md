@@ -7,18 +7,20 @@ When a Vault's Collateralization Ratio falls below the Min. Collateral Ratio, it
 1.  **Navigate to the Liquidation Page**\
     Visit the Liquidation Page to view Vaults eligible for liquidation.
 
-    <figure><img src="../.gitbook/assets/12.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../.gitbook/assets/15.png" alt=""><figcaption></figcaption></figure>
+
+
 2.  **Review Vault Details**\
     Each Vault's detailed information, including its debt and collateral status, is available on the liquidation page. This helps users make informed decisions before initiating a liquidation.
 
-    <figure><img src="../.gitbook/assets/13.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../.gitbook/assets/16.png" alt=""><figcaption></figcaption></figure>
 3. **Earn Liquidation Rewards**\
    Users who trigger a liquidation will receive a reward. Rewards are distributed based on the following formula: **Potential Net Profit = Liquidation Incentive (Relative) + Liquidation Incentive (Constant) - Transaction Fee**
    1. Liquidation Incentive (Relative): This reward component is proportional to the debt of the liquidated Vault.
    2. Liquidation Incentive (Constant): A fixed reward for successfully liquidating a Vault.
    3.  Transaction Fee: The estimated gas fee for completing the transaction. The actual fee can be verified later using a blockchain explorer.
 
-       <figure><img src="../.gitbook/assets/14.png" alt=""><figcaption></figcaption></figure>
+       <figure><img src="../.gitbook/assets/17.png" alt=""><figcaption></figcaption></figure>
 4. Choose Reward Address:
    1. Rewards can be sent to your currently connected wallet.
    2. Alternatively, you can specify a different address to receive the rewards.
