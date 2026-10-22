@@ -6,7 +6,6 @@ To ensure transparency and security, all collateral backing USDD is held in publ
 
 Collateral Contracts
 
-* USDD: [TCrEVahRbhDFB6uRXEWUg7wkptXvg47GKs](https://tronscan.org/#/address/TCrEVahRbhDFB6uRXEWUg7wkptXvg47GKs)
 * TRX-A: [TJ1VWPvFVq7sVsN7J7dWJVZz4SLT14qRUr](https://tronscan.org/#/contract/TJ1VWPvFVq7sVsN7J7dWJVZz4SLT14qRUr)
 * TRX-B: [TGQKnHDQNyc3QeHJ7YxH8wggdg89UVXyvX](https://tronscan.org/#/contract/TGQKnHDQNyc3QeHJ7YxH8wggdg89UVXyvX)
 * TRX-C: [TPUPPLTYLdbW4jxwD5g2T7ystxsR9HL2mt](https://tronscan.org/#/contract/TPUPPLTYLdbW4jxwD5g2T7ystxsR9HL2mt)
