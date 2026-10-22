@@ -1,7 +1,7 @@
 # Example Process
 
 1. **Collateral Deposit and Minting**\
-   A user deposits collateral worth $1,500 and mints $1,000 USDD, maintaining a collateralization ratio of 150%.
+   In this example, assume a liquidation threshold of 130% and a liquidation penalty of 10%. A user deposits collateral worth $1,500 and mints 1,000 USDD, resulting in a collateralization ratio of 150%.
 2. **Market Downturn and Collateralization Ratio Drop**\
    Due to a market downturn, the collateral value drops to $1,200, reducing the collateralization ratio to 120%, which is below the liquidation threshold of 130%.
 3. **Liquidation Triggered**\
@@ -22,4 +22,4 @@
 
 This process ensures the protocol remains solvent while providing opportunities for Keepers to acquire collateral at competitive prices and protecting users by refunding surplus collateral.
 
-\
+\\
