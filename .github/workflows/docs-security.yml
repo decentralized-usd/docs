@@ -1,0 +1,47 @@
+name: Documentation security
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+  merge_group:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: docs-security-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  docs-security:
+    name: docs-security
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout candidate as data
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          path: candidate
+          persist-credentials: false
+      - name: Checkout trusted base
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.base.sha || github.event.merge_group.base_sha || github.sha }}
+          path: trusted
+          persist-credentials: false
+      - name: Validate documentation against trusted policy
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -f trusted/scripts/check_docs_security.py ]]; then
+            python3 -I trusted/scripts/check_docs_security.py --root candidate \
+              --policy trusted/security/doc-policy.json --baseline trusted/security/doc-baseline.json
+          else
+            echo '::warning::Bootstrap only: base has no checker. Alice must verify checker, policy, baseline and source evidence before first merge; an administrator must enable PR and required-check protection. Solo maintenance provides no independent approval.'
+            python3 -I candidate/scripts/check_docs_security.py --root candidate \
+              --policy candidate/security/doc-policy.json --baseline candidate/security/doc-baseline.json
+          fi
+      - name: Test candidate checker on isolated hosted runner
+        run: python3 -I -m unittest discover -s candidate/tests -v

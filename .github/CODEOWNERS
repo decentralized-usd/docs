@@ -1,0 +1,4 @@
+# Alice is the sole daily maintainer. This file identifies responsibility only.
+# Require PRs and successful docs-security checks, with zero required approvals.
+# Do not enable required Code Owner review: authors cannot approve their own PRs.
+* @aliceChuhT

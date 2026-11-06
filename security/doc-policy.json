@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "allowed_hosts": [
+    "aeon.xyz", "app.justlend.org", "app.usdd.io", "bscscan.com",
+    "docs.github.com", "docs.usdd.io", "etherscan.io", "github.com",
+    "gitbook.com", "modelcontextprotocol.io", "openapi.usdd.io",
+    "poloniex.com", "sunswap.com", "tronscan.org", "usdd.io",
+    "www.bybit.com", "www.chainsecurity.com", "www.coinw.com",
+    "www.gate.io", "www.gitbook.com", "www.lbank.com", "www.npmjs.com"
+  ],
+  "http_exceptions": ["http://127.0.0.1:3101/health"],
+  "critical_pages": [
+    "usdd/en/introduction/collateral-asset-contract-addresses.md",
+    "usdd/en/developers/deployment-addresses.md",
+    "usdd/en/introduction/ecosystem-migration-progress.md",
+    "usdd/en/ai-support/mcp-server/README.md",
+    "usdd/en/ai-support/usdd-skills/README.md",
+    "usdd/en/security/audits.md"
+  ],
+  "asset_extensions": [".png", ".jpg", ".jpeg", ".gif", ".webp", ".svg", ".pdf"]
+}
