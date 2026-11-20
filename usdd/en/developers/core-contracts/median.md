@@ -13,5 +13,5 @@ It provides the protocol’s trusted reference price.
 
 * `poke()`\
   Updates price from whitelisted providers.
-* `peek(what, data) / file(what, ilk, data)`\
-  Get the price and validity.
+* `peek()`\
+  Returns the stored price (`uint256`) and a validity flag (`bool`).

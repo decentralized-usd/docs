@@ -1,5 +1,8 @@
 # Getting Started
 
+**Network Availability**\
+Feature availability and operating instructions vary by network. Check the network scope of each guide before proceeding.
+
 If you believe in the long-term value of the collateral you've deposited and don't want to sell it, but still need liquidity for other purposes in life, USDD offers a secure and decentralized solution. By minting USDD using your collateral, you can maintain your investment while accessing the funds you need.
 
 ## Feature Overview

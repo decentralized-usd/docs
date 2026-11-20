@@ -1,6 +1,9 @@
 # Manage a Vault
 
-If you’ve already **opened a Vault**, you can manage it through various actions to optimize its performance and mitigate risks. Below is a detailed guide for managing your Vault:
+**Guide Scope: TRON**\
+This guide covers managing an existing Vault on TRON. The instructions and screenshots below apply to TRON.
+
+If you’ve already **opened a Vault**, you can manage it through various actions to optimize its performance and mitigate risks. Below is a detailed guide for managing your Vault:<br>
 
 1. **Add Collateral**
 

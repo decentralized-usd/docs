@@ -8,7 +8,7 @@ Welcome to usdd.io, a protocol  (the “Interface” or “App”) provided by t
 
 #### 1. Preface
 
-This Privacy Policy provides the policy regarding the nature, purpose, use, and sharing of personal data or other information collected from the users of the Interface . Please read this carefully as this Privacy Policy is legally binding when you use the Site.
+This Privacy Policy provides the policy regarding the nature, purpose, use, and sharing of personal data or other information collected from the users of the Interface. Please read this carefully as this Privacy Policy is legally binding when you use the Site.
 
 You can reach us with any request relating to this Privacy Policy via contact details provided below.
 
@@ -18,7 +18,7 @@ Information Collected Automatically
 
 The Interface may collect the following types of information automatically:
 
-* Usage Statistics: The Interface uses Google Analytics to collect aggregated data including approximate location, device and browser type. For more information, please visit Google Analytics’ Privacy Policy. To learn more about how to opt-out of Google Analytics’ use of your information, please click [here.](https://tools.google.com/dlpage/gaoptout)
+* Usage Statistics: The Interface uses Google Analytics to collect aggregated data including approximate location, device and browser type. For more information, please visit [Google Analytics’ Privacy Policy](https://policies.google.com/privacy). To learn more about how to opt-out of Google Analytics’ use of your information, please click [here.](https://tools.google.com/dlpage/gaoptout)
 * Cookies: analytics cookies including page views and clicks.
 * IP Addresses: However, we do not store visitors' IP addresses, including in server logs.
 
@@ -29,7 +29,7 @@ Information You Provide Directly
 
 Information Not Provided
 
-The Interface does not view wallet private keys, seed phrases, passwords, government-issued IDs, phone numbers, residential addresses, bank card or other financial account details
+The Interface does not view wallet private keys, seed phrases, passwords, government-issued IDs, phone numbers, residential addresses, bank card or other financial account details.
 
 #### 3. Use of Cookies and Similar Technologies
 
@@ -83,7 +83,7 @@ We implement reasonable security measures to protect your information from unaut
 
 #### 9. Third-Party Links and Social Media
 
-The Interface may include links to third-party websites. These third-party services operate under their own privacy policies, and we are not responsible for their practices. Please review their privacy policies before engaging with them
+The Interface may include links to third-party websites. These third-party services operate under their own privacy policies, and we are not responsible for their practices. Please review their privacy policies before engaging with them.
 
 #### 10. Duration of Data Processing
 
@@ -108,5 +108,3 @@ P.O. Box 116
 Road Town, Tortola&#x20;
 
 British Virgin Islands
-
-\ <br>

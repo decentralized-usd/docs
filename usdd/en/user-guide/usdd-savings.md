@@ -1,5 +1,8 @@
 # USDD Savings
 
+**Guide Scope: Ethereum and BNB Chain**\
+This guide covers depositing and withdrawing USDD through sUSDD on Ethereum and BNB Chain.
+
 This guide explains how to stake USDD to earn yield through sUSDD. By connecting your wallet, depositing USDD, and receiving sUSDD as proof of stake, you can start earning interest automatically. You can withdraw your funds at any time without a lock-up period.
 
 ### &#x20;1. Connect Your Wallet

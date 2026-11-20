@@ -17,9 +17,7 @@
    1. The protocol retains $1,100 worth of USDD to cover the debt and liquidation penalty.
    2. Any remaining collateral value (after deducting the amount sold during the auction) is refunded to the user.
 7. **Auction Outcome**
-   1. The Keeper receives the collateral at the auction price. For example, if the auction price is $0.95 per unit of collateral, the Keeper receives collateral valued at $1,157.89 ($1,100 ÷ $0.95).
+   1. The Keeper receives the collateral at the auction price. For example, paying 1,100 USDD at an auction price of 0.95 USDD per unit yields approximately 1,157.89 units of collateral (1,100 ÷ 0.95).
    2. The user retains any excess collateral that wasn't required to cover the debt and penalty.
 
 This process ensures the protocol remains solvent while providing opportunities for Keepers to acquire collateral at competitive prices and protecting users by refunding surplus collateral.
-
-\\

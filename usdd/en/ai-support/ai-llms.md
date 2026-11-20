@@ -58,11 +58,11 @@ https://docs.usdd.io/llms.txt
 
 ### Coverage <a href="#coverage" id="coverage"></a>
 
-The documentation covers all USDD 2.0 modules across Tron, Ethereum, and BNB Chain:
+The documentation covers USDD 2.0 modules across TRON, Ethereum, and BNB Chain. Network support varies by product:
 
 * **PSM** — 1:1 stablecoin swaps (Tron / Ethereum / BNB Chain)
-* **Vault** — Over-collateralized USDD minting (Tron only)
-* **Earn / sUSDD** — Yield-bearing savings (Tron / Ethereum / BNB Chain)
+* **Vault** — Over-collateralized USDD minting (TRON / Ethereum)
+* **Earn / sUSDD** — Yield-bearing savings (Ethereum / BNB Chain)
 * **Liquidation & Auction** — Keeper integration and auction mechanics
 * **Oracle** — Median → OSM → Spot price feed architecture
 * **Core Contracts** — Vat, Dog, Clip, Jug, PSM module specs

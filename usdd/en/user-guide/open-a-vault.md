@@ -1,6 +1,10 @@
 # Open a Vault
 
-1. **Navigate to the Vault page**
+**Guide Scope: TRON**\
+This guide covers opening a Vault on TRON. The instructions and screenshots below apply to TRON.<br>
+
+1. **Navigate to the Vault page**\
+   Visit the [TRON Vault page](https://app.usdd.io/tron/) to get started.
 2. **Connect Your TronLink Wallet**
    1. Begin by linking your TronLink wallet to the platform. This wallet will serve as your interface for managing collateral and minting USDD.
    2.  Ensure your wallet has sufficient TRX to cover the gas fees for transactions.

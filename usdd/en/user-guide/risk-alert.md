@@ -4,6 +4,9 @@ description: Protecting your assets with real-time risk monitoring
 
 # Risk Alert
 
+**Guide Scope: TRON**\
+This guide covers Risk Alert setup for TRON [Vault ](https://app.usdd.io/tron/)positions. The instructions and screenshots below apply to TRON.
+
 To help users better manage their collateralized positions, USDD has officially launched the Risk Alert feature. With Risk Alert, you’ll be notified the moment your position approaches the liquidation threshold, allowing you to take timely action and avoid unnecessary losses.
 
 **Key Features**

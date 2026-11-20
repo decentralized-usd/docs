@@ -10,9 +10,7 @@ USDD stands out as a next-generation stablecoin built on principles of decentral
    Over-collateralized reserves help support USDD’s stability and provide a buffer against market fluctuations. Decentralized governance mechanisms further safeguard the stability and security of the ecosystem.
 4. **Seamless DeFi Integration**\
    USDD integrates effortlessly into the broader DeFi ecosystem, enabling use cases like lending, borrowing, staking, and trading. This interoperability makes it a versatile tool for both individual users and institutions.
-5. **Freeze-Free Transactions**\
-   Once USDD is held in a self-custodial wallet on-chain, no centralized authority can directly freeze the USDD token itself.
-6. **Multichain**\
+5. **Multichain**\
    The current USDD application supports **TRON, Ethereum, and BNB Chain**. Token transfers and bridge or migration routes are distinct from protocol features such as Vaults, PSM, and Savings; availability, collateral types, and parameters depend on the selected network. Check the application and [Contract Addresses](https://docs.usdd.io/introduction/collateral-asset-contract-addresses) for that network before use. References to USDDOLD or historical BTTC migration routes do not establish current USDD protocol support on BTTC.
 
 These core features make USDD a robust and adaptable stablecoin, designed to empower its users while maintaining the highest standards of stability, security, and decentralization.
