@@ -17,9 +17,8 @@ The Dog contract oversees the liquidation process. It monitors Vaults for underc
     hole: Maximum debt to liquidate per collateral type.
 * `digs(ilk, rad)`\
   Adjusts internal debt balances after liquidation is completed.
-* `file(what, ilk, data)`\
+* `file(ilk, what, data)`\
   Configures liquidation parameters, such as penalties and incentives.
   * Example Parameters:
     * `chop`: Liquidation penalty (e.g., 5% of the debt).
     *   `hole`: Maximum debt to liquidate per collateral type.
-

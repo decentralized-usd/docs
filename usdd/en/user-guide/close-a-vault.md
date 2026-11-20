@@ -1,8 +1,11 @@
 # Close a Vault
 
+**Guide Scope: TRON**\
+This guide covers repaying the full debt and withdrawing all collateral from a Vault on TRON. The instructions and screenshots below apply to TRON.
+
 1. **Navigate to the Vault page**
 
-Go to the Vault section and locate the active Vault you wish to close.
+Go to the Vault section and locate the active [Vault](https://app.usdd.io/tron/) you wish to close.
 
 
 
@@ -50,11 +53,18 @@ In the Withdraw field, click Max or enter the full collateral amount.
 
 
 
-6. **Confirm Transaction**&#x20;
+6. **Approve USDD spending, if required**
 
-Click Payback All & Withdraw, confirm the transaction in your wallet.
+If an **Approve** button is displayed, click it and confirm the approval in your wallet. Wait for the approval to complete before proceeding.\
+Approval only grants permission to spend USDD. It does not repay your debt or withdraw your collateral.
 
-<figure><img src="../.gitbook/assets/23.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/gitbook-63-approve-usdd.png" alt=""><figcaption></figcaption></figure>
+
+7. **Confirm repayment and collateral withdrawal**
+
+Review the full repayment amount and the collateral amount to withdraw. Click **Payback & Withdraw**, then confirm the transaction in your wallet. Wait for the transaction to succeed.
+
+<figure><img src="../.gitbook/assets/gitbook-63-payback-withdraw.png" alt=""><figcaption></figcaption></figure>
 
 Once completed, your Vault debt will be zero, and all collateral will be returned to your wallet.
 
@@ -68,6 +78,3 @@ If you don’t have enough USDD, you can:
 
 * Swap USDD via the PSM (Peg Stability Module)
 * Or purchase USDD from exchanges
-
-
-

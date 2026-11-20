@@ -1,5 +1,8 @@
 # Liquidation
 
+**Guide Scope: TRON**\
+The participation instructions below apply to [Vault liquidations](https://app.usdd.io/tron/liquidation) on TRON.
+
 When a Vault's Collateralization Ratio falls below the Min. Collateral Ratio, it becomes eligible for liquidation. This process plays a critical role in maintaining the stability and efficiency of the USDD ecosystem. By participating in liquidations, users can earn rewards while contributing to the system's health.
 
 #### Steps to Participate in Liquidation
@@ -18,15 +21,15 @@ When a Vault's Collateralization Ratio falls below the Min. Collateral Ratio, it
    Users who trigger a liquidation will receive a reward. Rewards are distributed based on the following formula: **Potential Net Profit = Liquidation Incentive (Relative) + Liquidation Incentive (Constant) - Transaction Fee**
    1. Liquidation Incentive (Relative): This reward component is proportional to the debt of the liquidated Vault.
    2. Liquidation Incentive (Constant): A fixed reward for successfully liquidating a Vault.
-   3.  Transaction Fee: The estimated gas fee for completing the transaction. The actual fee can be verified later using a blockchain explorer.
+   3. **Transaction Fee:** The estimated network fee, expressed in USDD for this calculation. If the fee is shown in TRX, convert it first: **Estimated Fee (USDD) = Estimated Fee (TRX) × TRX Price (USDD per TRX)**. Use the TRX/USDD price at the time of estimation. Do not subtract a TRX amount directly from a USDD reward. Actual fees and net profit may differ from the estimate.
 
        <figure><img src="../.gitbook/assets/17.png" alt=""><figcaption></figcaption></figure>
 4. Choose Reward Address:
-   1. Rewards can be sent to your currently connected wallet.
-   2. Alternatively, you can specify a different address to receive the rewards.
-5.  Withdraw Rewards：
 
-    The rewards from liquidations are stored in the liquidation auction account. Users can withdraw these rewards to their wallets as part of the liquidation process.
+   Select the address whose Auction Account will receive the liquidation reward. By default, this is your connected wallet address; you may specify another TRON address you control. The reward is credited to that address’s Auction Account, not directly to its wallet token balance.
+5. Withdraw Rewards：
+
+   After the liquidation transaction succeeds, connect the wallet for the selected reward address and check its USDD balance in the Auction Account. Use Withdraw to transfer the available USDD to that wallet. Withdrawal is a separate on-chain transaction and requires applicable network fees.
 
 #### Key Benefits
 

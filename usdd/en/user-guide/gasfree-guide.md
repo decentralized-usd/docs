@@ -114,7 +114,7 @@ Currently, GasFree only supports designated TRC-20 tokens. If you transfer an un
 
 **7) What should I do if a transaction gets stuck in "Processing"?**
 
-Do not resubmit the transaction. Locate the transaction in your records, copy the transaction hash, and contact USDD support or your wallet provider.
+Do not resubmit the transaction. Locate the transaction in your records, copy the transaction hash, and contact [USDD support](mailto:support@usdd.io) or your wallet provider.
 
 ## 8. Security Tips
 

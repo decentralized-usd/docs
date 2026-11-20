@@ -32,7 +32,7 @@ Handles collateral auctions, where liquidated collateral is sold to cover bad de
     * `id`: The auction ID.
     * **Access restriction:** Only authorized addresses with `wards[msg.sender] == 1` can call this function.
 * `file(what, data)`\
-  Configures auction parameters such as price decay rates or auction durations.
+  Configures auction parameters and contract addresses, including keeper incentives, reset durations, and the price calculator (`calc`).
   * Example Parameters:
     * `tip`: Fixed incentive for starting an auction.
-    * `cut`: Price decay factor per second.
+    * `calc`: Price calculator contract address, configured through the address overload of `file(what, data)`. The calculator determines the decay model and holds its parameters. For `StairstepExponentialDecrease`, `cut` is a ray-scaled price multiplier applied once per `step` seconds. For `ExponentialDecrease`, `cut` applies every second. Read the active calculator and its parameters for the selected collateral and network.

@@ -14,5 +14,3 @@
   The liquidation and auction mechanism enhances the protocol's ability to withstand extreme market volatility, ensuring decentralized, secure, and robust operations.
 
 This comprehensive process not only preserves the protocol’s integrity but also creates a self-sustaining loop of stability, transparency, and trust, which are critical to USDD’s long-term success in the DeFi ecosystem.
-
-\

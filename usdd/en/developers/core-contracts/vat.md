@@ -22,6 +22,6 @@ The core accounting contract of the protocol, VAT tracks system-wide balances, i
   Executes adjustments on collateral and debt during liquidation.
 * `fold(ilk, u, rate)`\
   Increase the `Ilk.rate` with rate, and hence the debt balances of all Vaults collateralized with the specified Ilk are updated implicitly.
-* `file(what, data) / file(what, ilk, data)`\
+* `file(what, data) / file(ilk, what, data)`\
   Sets or updates system-wide parameters like debt ceilings, stability fees, or collateralization thresholds.
   * Example Use: Setting a collateral type’s maximum mintable USDD.

@@ -1,11 +1,14 @@
 # Collateral Auction
 
+**Guide Scope: TRON**\
+The participation instructions below apply to collateral auctions on TRON.
+
 When a Vault is liquidated, its collateral is moved into an auction process. Users can bid on the collateral at auction prices, potentially securing profits. The auction uses a Dutch auction model, where the price gradually decreases over time until a buyer places a bid or the auction ends.
 
 #### Steps to Participate in an Auction
 
 1.  **Navigate to the Auction Page**\
-    Visit the Auction Page to explore ongoing auctions.
+   Visit the [Auction Page ](https://app.usdd.io/tron/auction)to explore ongoing auctions.
 
     <figure><img src="../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
 2. **View Auction Details**

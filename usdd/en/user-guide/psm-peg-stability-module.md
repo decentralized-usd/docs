@@ -1,6 +1,9 @@
 # PSM
 
-To perform stablecoin-to-USDD conversions, navigate to the PSM page.
+**Guide Scope: TRON**\
+This guide describes using the PSM on TRON. The instructions below, including the requirement for TRX to cover network fees, apply to TRON.
+
+To perform stablecoin-to-USDD conversions, navigate to the [PSM page](https://app.usdd.io/tron/psm).
 
 <figure><img src="../.gitbook/assets/9.png" alt=""><figcaption></figcaption></figure>
 

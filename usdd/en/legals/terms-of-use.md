@@ -10,7 +10,7 @@ Welcome to usdd.io, a protocol  interface (the “Interface” or “App”) pro
 
 #### 1. Acceptance of Terms
 
-By (i) using this web site, protocol or interface (each, a “Site” “App” or “Protocol”), collectively, the “Services” provided by us, in any way, you, agree that you have read, understand and agree to these Terms and the USDD [Privacy Policy](https://docs.usdd.io/legals/privacy-policy) (which is incorporated herein by reference), each of which govern your access and use of the Services.
+By using this web site, protocol or interface (each, a “Site”, “App”, or “Protocol”), collectively, the “Services” provided by us, in any way, you agree that you have read, understand and agree to these Terms and the USDD [Privacy Policy](https://docs.usdd.io/legals/privacy-policy) (which is incorporated herein by reference), each of which govern your access and use of the Services.
 
 #### 2. Modification of this Agreement
 
@@ -77,7 +77,7 @@ The Interface may include links to third-party resources or promotions. We do no
 
 #### 13. Indemnification
 
-You agree to indemnify and hold the USDD Team and its subsidiaries, affiliates, officers, agents, employees, co-branders or other partners, and licensors harmless from any claim or demand, including reasonable legal and accounting fees, due to, in connection with or arising out of (i) your use of, access to or failure to access the Interface or wallets containing the USDD token, (ii) third-party actions facilitated by your use of the Interface (iii) your access to or use of linked or compatible websites, exchanges, bridges, liquidity pools or wallet providers leveraging the Interface or USDD token (iv) any agreements, transactions, losses, or liability arising between you and any third parties leveraging the Interface or USDD token, (v) your violation of these Terms, or (vi) your violation of any rights of another User, including any intellectual property rights.
+You agree to indemnify and hold the USDD Team and its subsidiaries, affiliates, officers, agents, employees, co-branders or other partners, and licensors harmless from any claim or demand, including reasonable legal and accounting fees, due to, in connection with or arising out of (i) your use of, access to or failure to access the Interface or wallets containing the USDD token; (ii) third-party actions facilitated by your use of the Interface; (iii) your access to or use of linked or compatible websites, exchanges, bridges, liquidity pools or wallet providers leveraging the Interface or USDD token; (iv) any agreements, transactions, losses, or liability arising between you and any third parties leveraging the Interface or USDD token; (v) your violation of these Terms; or (vi) your violation of any rights of another User, including any intellectual property rights.
 
 #### 14. Governing Law
 
@@ -87,7 +87,7 @@ Except as provided otherwise, these Terms and their interpretation, and all matt
 
 If you reside outside the United States of America, you agree that the British Virgin Islands Arbitration Act and laws of the British Virgin Islands govern disputes between us.&#x20;
 
-If you reside in the United States of America, you agree that the Federal Arbitration Act, Title 9, United States Code, Section 1, et seq. governs this section on disputes between us, and that we will resolve disputes as follows: Any dispute, claim or controversy arising out of or relating to the Services, these Terms or the breach, termination, enforcement, interpretation or validity thereof (collectively, “Disputes“) shall be settled by arbitration by a single arbitrator under the Consumer Arbitration Rules (the “AAA Rules“) of the American Arbitration Association (“AAA“) and in accordance with the Federal Arbitration Act, Title 9, United States Code, Section 1, et seq. and not in a class representative or consolidated action or proceeding. The AAA Rules are available at [www.adr.org](http://www.adr.org) or by calling 1-800-778-7879.
+If you reside in the United States of America, you agree that the Federal Arbitration Act, Title 9, United States Code, Section 1, et seq. governs this section on disputes between us, and that we will resolve disputes as follows: Any dispute, claim or controversy arising out of or relating to the Services, these Terms or the breach, termination, enforcement, interpretation or validity thereof (collectively, “Disputes”) shall be settled by arbitration by a single arbitrator under the Consumer Arbitration Rules (the “AAA Rules”) of the American Arbitration Association (“AAA”) and in accordance with the Federal Arbitration Act, Title 9, United States Code, Section 1, et seq. and not in a class representative or consolidated action or proceeding. The AAA Rules are available at [www.adr.org](http://www.adr.org) or by calling 1-800-778-7879.
 
 You and the USDD Team each waive irrevocably the right to a trial by jury.
 

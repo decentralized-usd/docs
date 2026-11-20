@@ -14,6 +14,6 @@ Ensures the protocol receives real-time, reliable price data for all collateral 
 * `poke(ilk)`\
   Updates the system with the latest price for a specific collateral type.
   * Example Use: Updating the TRX price when markets fluctuate.
-* `file(what, ilk, data)`\
+* `file(ilk, what, data)`\
   Configures parameters such as the liquidation ratio (`mat`).
   * Example Use: Setting mat to 150%, requiring 1.5x collateral for every USDD minted.
