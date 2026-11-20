@@ -31,14 +31,19 @@ git diff --check
 
 ## 发布与已知限制
 
-GitBook 合并可能直接更新官网；GitHub 的 `master` 使用合并队列，两者是独立状态。
-GitBook 当前向 `master` 直接推送会被队列规则拒绝，自动同步尚未恢复。
-现阶段将已审核并发布的 GitBook 内容整理为独立 GitHub PR，由 Alice 复核后经队列合入。
-PR 应记录 GitBook 变更链接、公开页面、核对结果及附件变化。
+目标流程是：未发布的 GitBook 草稿空间 → `codex/gitbook-draft` → GitHub PR →
+Alice 复核并通过合并队列合入 `master` → 正式 GitBook 空间同步 → `docs.usdd.io`。
+GitBook 草稿合并不会自动创建 GitHub PR；待同步连接完成后使用
+[候选分支对比入口](https://github.com/decentralized-usd/docs/compare/master...codex/gitbook-draft?expand=1) 建立 PR。
 
-更换 GitBook 同步分支或连接账号需另外配置并核对授权；不能通过豁免保护规则修复同步。
-重新连接时，落后的 GitHub 分支不能作为覆盖官网的初始同步来源。
-回滚仓库使用 revert PR；若需回滚官网，须同时恢复 GitBook 已审核版本并检查公开页面。
+**当前仍在配置，不能视为发布门禁已生效。** 独立草稿空间和候选分支已创建；正式空间
+已成功导入 Alice 合并的 PR #3。草稿 Git Sync 尚待连接，正式空间仍缺少禁止直接合并的
+平台限制。GitBook 向 `master` 直接推送会被队列拒绝，但这不会阻止正式空间先发布。
+日常内容修改从现在起只在草稿空间或 GitHub 分支中准备，勿在正式空间合并。
+
+空间入口、配置参数、剩余权限依赖、验收和回滚步骤见 [发布流程](docs/publishing.md)。
+不通过 GitBook 豁免规则修复同步，不用落后的 GitHub 内容覆盖官网，不在正式站点测试草稿。
+回滚同样走 revert PR，由 Alice 合入 `master` 后等待正式空间同步并检查公开页面。
 
 不提交密钥、助记词、Token、生产配置或内部敏感端点。地址和操作入口须按网络核对官方来源，
 静态文档审查不能替代链上验证或实际产品交易测试。
