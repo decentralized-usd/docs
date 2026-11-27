@@ -7,6 +7,7 @@ USDD 对外文档源码，通过 GitBook 发布到 [docs.usdd.io](https://docs.u
 ## 内容与目录
 
 - `usdd/en/introduction/`、`system-architecture/`：产品、网络范围、协议架构和 sUSDD 机制。
+- [合约地址](usdd/en/introduction/collateral-asset-contract-addresses.md)按主网列出合约。Ethereum 抵押合约列表包含 wstETH-A 和 wstETH-B 各自的 GemJoin 地址。
 - `usdd/en/user-guide/`：Vault 抵押与铸币、偿还与提取、清算与拍卖、PSM 兑换及 Savings 操作。各功能和参数以对应网络指南及当前应用为准。
 - `usdd/en/developers/`：合约接口、部署地址、预言机和公开 API。
 - `usdd/en/legals/`、`security/`：用户条款、隐私政策、安全说明和审计资料。
